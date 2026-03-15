@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: Pixel-Matching 88.7% → 99.5% — pip</title>
+  <meta name="description" content="How PIP forced Claude Code to stop spinning and find the real root cause — a 2px CSS offset hiding in plain sight.">
+  <meta property="og:title" content="Case Study: Pixel-Matching 88.7% → 99.5%">
+  <meta property="og:description" content="AI kept tweaking anti-aliasing for hours. PIP forced systematic investigation — found a 2px CSS offset that fixed 83 pixels at once.">
+  <meta property="og:type" content="article">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💢</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #09090b;
+      --bg-card: #111113;
+      --bg-card-hover: #18181b;
+      --border: #27272a;
+      --border-bright: #3f3f46;
+      --text: #fafafa;
+      --text-dim: #a1a1aa;
+      --text-muted: #71717a;
+      --lime: #adfa1b;
+      --lime-dim: #7ecf0a;
+      --red: #ef4444;
+      --orange: #f97316;
+      --yellow: #eab308;
+      --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--lime); color: var(--bg); }
+
+    /* Nav */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-weight: 700; font-size: 1.25rem;
+      color: var(--lime);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .nav-link {
+      color: var(--text-dim); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--lime); }
+
+    /* Layout */
+    .container { max-width: 720px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Article */
+    .article-header {
+      padding-top: 7rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .article-label {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--lime); text-transform: uppercase;
+      letter-spacing: 0.15em; margin-bottom: 0.75rem;
+    }
+
+    .article-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.15; margin-bottom: 1rem;
+    }
+
+    .article-meta {
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+
+    .article-body {
+      padding: 3rem 0 5rem;
+    }
+
+    .article-body p {
+      font-size: 1.05rem; color: var(--text-dim);
+      line-height: 1.75; margin-bottom: 1.5rem;
+    }
+
+    .article-body strong {
+      color: var(--text); font-weight: 600;
+    }
+
+    .article-body h2 {
+      font-size: 1.5rem; font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 3rem 0 1rem;
+      padding-top: 1rem;
+    }
+
+    .article-body h3 {
+      font-size: 1.15rem; font-weight: 600;
+      margin: 2rem 0 0.75rem;
+    }
+
+    /* Highlight box */
+    .highlight {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--lime);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--bg-card);
+    }
+
+    .highlight p { margin-bottom: 0.5rem; }
+    .highlight p:last-child { margin-bottom: 0; }
+
+    .highlight .label {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--lime); text-transform: uppercase;
+      letter-spacing: 0.1em; margin-bottom: 0.5rem;
+    }
+
+    /* Stats row */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+
+    .stat {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono); font-weight: 700;
+      font-size: 1.75rem; letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Images */
+    .article-img {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+
+    /* Stage cards */
+    .stage {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      background: var(--bg-card);
+    }
+
+    .stage-header {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stage-pct {
+      font-family: var(--font-mono); font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .stage-name {
+      font-size: 0.9rem; font-weight: 600;
+    }
+
+    .stage-body {
+      padding: 1.25rem;
+    }
+
+    .stage-body p {
+      font-size: 0.95rem; margin-bottom: 0.75rem;
+    }
+    .stage-body p:last-child { margin-bottom: 0; }
+
+    /* Ordered list */
+    .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: var(--text-dim);
+    }
+
+    .article-body ol li {
+      font-size: 1rem; line-height: 1.75;
+      margin-bottom: 0.5rem;
+      padding-left: 0.5rem;
+    }
+
+    .article-body ol li strong {
+      color: var(--text);
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      color: var(--lime); text-decoration: none;
+      font-family: var(--font-mono); font-size: 0.85rem;
+      transition: opacity 0.2s;
+      margin-top: 2rem;
+    }
+    .back-link:hover { opacity: 0.8; }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 4rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      font-size: 1.5rem; margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; border-radius: 8px;
+      font-family: var(--font-mono); font-size: 0.875rem;
+      font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none;
+      background: var(--lime); color: var(--bg);
+    }
+    .btn:hover { background: #c4fb5a; transform: translateY(-1px); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    footer a { color: var(--text-dim); text-decoration: none; }
+    footer a:hover { color: var(--lime); }
+
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-brand">pip</a>
+  <div class="nav-right">
+    <a href="/" class="nav-link">← Back to Home</a>
+    <a href="https://github.com/MrCoder/pip" class="nav-link">GitHub</a>
+  </div>
+</nav>
+
+<article>
+  <header class="article-header">
+    <div class="container">
+      <div class="article-label">Case Study</div>
+      <h1 class="article-title">How PIP Broke Through a Pixel-Matching Wall That Had AI Spinning for Hours</h1>
+      <div class="article-meta">ZenUML SVG Renderer — from 88.7% to 99.5% match</div>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <div class="container">
+
+      <h2>The Challenge</h2>
+
+      <p>ZenUML has two rendering paths: HTML/React and native SVG. The SVG renderer needs to produce output that is visually identical to the HTML version — pixel for pixel. This matters because users switch between rendering modes and expect consistent diagrams.</p>
+
+      <p>We set up a Playwright-based pixel comparison pipeline: render both versions, overlay them, count mismatching pixels. The target was 99%+ match. When we started, we were at <strong>88.7%</strong>.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" style="color: var(--red);">88.7%</div>
+          <div class="stat-label">Starting point</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color: var(--orange);">93.6%</div>
+          <div class="stat-label">Where AI got stuck</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" style="color: var(--lime);">99.5%</div>
+          <div class="stat-label">After PIP activated</div>
+        </div>
+      </div>
+
+      <h2>Stage 1: The Easy Wins (88.7% → 93.6%)</h2>
+
+      <p>The first round of fixes was straightforward. Claude Code identified obvious differences — oversized icons, wrong stroke colors, missing border-radius values — and fixed them one by one. Each fix moved the needle a few percentage points. Within a few turns, we hit <strong>93.6%</strong>.</p>
+
+      <p>This is where most AI coding sessions would stall. And it did.</p>
+
+      <h2>Stage 2: The Spinning (Stuck at 93.6%)</h2>
+
+      <p>At 93.6%, the remaining mismatches were subtle — scattered across the diagram, no single obvious cause. Claude Code fell into a classic AI pattern: <strong>tweaking the same class of parameters in circles</strong>.</p>
+
+      <p>It tried adjusting anti-aliasing settings. Then fractional pixel offsets. Then stroke-width decimals. Then anti-aliasing again with slightly different values. Each attempt moved 1–2 pixels at best, often breaking pixels that previously matched.</p>
+
+      <div class="highlight">
+        <div class="label">What spinning looks like</div>
+        <p>Turn 1: "Let me try <code>shape-rendering: crispEdges</code>" → +1 pixel</p>
+        <p>Turn 2: "What about <code>stroke-width: 0.98</code>?" → −2 pixels</p>
+        <p>Turn 3: "Maybe <code>transform: translate(0.5, 0.5)</code>" → +1 pixel</p>
+        <p>Turn 4: "Let me revisit anti-aliasing..." → back to square one</p>
+      </div>
+
+      <p>After 6+ turns of this, the score hadn't moved past 94%. The AI was applying the same mental model — "mismatches are caused by rendering parameters" — without questioning whether the <em>fundamental assumption</em> was wrong.</p>
+
+      <h2>Stage 3: PIP Activated (93.6% → 99.5%)</h2>
+
+      <p>This is where PIP kicked in. After detecting the spinning pattern (repeated attempts at the same class of fix with diminishing returns), PIP escalated to <strong>L3 — Soul Interrogation</strong>:</p>
+
+      <div class="highlight">
+        <div class="label">PIP's 7-point checklist forced the AI to</div>
+        <p><strong>1. Extract every mismatch pixel</strong> — not "there are scattered mismatches" but the exact coordinates of every single one</p>
+        <p><strong>2. Categorize by region</strong> — are they clustered around borders? Inside shapes? Along text baselines?</p>
+        <p><strong>3. Measure element positions</strong> — what are the actual computed bounding boxes in both renderers?</p>
+        <p><strong>4. Compare the numbers</strong> — not eyeball it, actually diff the measurements</p>
+      </div>
+
+      <p>This systematic extraction revealed something the parameter-tweaking approach never could: <strong>a 2px CSS box-model offset</strong>. The HTML renderer was using <code>border-box</code> sizing while the SVG renderer was calculating positions with <code>content-box</code> assumptions. Every element in the diagram was shifted by exactly 2 pixels.</p>
+
+      <p>One CSS fix. <strong>83 pixels corrected at once.</strong> The score jumped from 93.6% to 98.5%.</p>
+
+      <p>Understanding the root cause opened the door to the next insight: SVG <code>stroke</code> geometry centers on the path, while CSS <code>border</code> is placed outside. Adjusting for this difference fixed 16 more pixels, bringing the total to <strong>99.5%</strong>.</p>
+
+      <p>The remaining 8 mismatched pixels are irreducible differences between CSS and SVG rendering engines — sub-pixel rounding that no amount of code can eliminate.</p>
+
+      <h2>What PIP Actually Did</h2>
+
+      <p>PIP didn't write the fix. It didn't know about box-model offsets or SVG stroke geometry. What it did was <strong>force a methodological shift</strong>:</p>
+
+      <ol>
+        <li><strong>Detected the spinning pattern</strong> — same class of fix attempted 3+ times with diminishing returns</li>
+        <li><strong>Escalated pressure</strong> — moved from gentle reminders to structured demands with a checklist</li>
+        <li><strong>Forced systematic investigation</strong> — "extract every mismatch pixel" is not a suggestion, it's a requirement with verification</li>
+        <li><strong>Required evidence before fixes</strong> — no more "let me try this," only "here's what the data shows"</li>
+      </ol>
+
+      <p>The difference between 93.6% and 99.5% wasn't a smarter model or more compute. It was a <strong>structured methodology that prevented the AI from taking shortcuts</strong>.</p>
+
+      <div class="highlight">
+        <div class="label">Key takeaway</div>
+        <p>AI doesn't lack capability — it lacks discipline. PIP provides the discipline. When the AI is forced to extract data, categorize evidence, and measure before acting, it finds root causes that parameter-tweaking never reaches.</p>
+      </div>
+
+      <a href="/" class="back-link">← Back to pip homepage</a>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div class="container">
+      <h2>Stop your AI from spinning in circles</h2>
+      <p style="color: var(--text-dim); margin-bottom: 1.5rem;">Install PIP and force systematic debugging.</p>
+      <a href="/#install" class="btn">Install pip</a>
+    </div>
+  </div>
+</article>
+
+<footer>
+  <a href="https://github.com/MrCoder/pip">GitHub</a> · Built by <a href="https://github.com/nicepeng">TanWei</a>
+</footer>
+
+</body>
+</html>
