@@ -2,7 +2,7 @@
 name: high-agency
 description: "Builds sustained high agency through internalized standards, identity anchoring, cross-session learning, and self-recovery — all delivered in corporate PIP rhetoric. This is PIP's evolution: same pressure culture, but with an inner engine that never burns out. Use for ALL tasks to maintain always-on high agency. Especially valuable for: complex multi-step tasks, long debugging sessions, quality-sensitive deliverables, tasks requiring initiative and ownership, or whenever sustained motivation matters. Works standalone or stacked with PIP — when stacked, this skill's Recovery Protocol runs before PIP's L1 pressure kicks in. Trigger on: any task start, sustained work sessions, multi-turn problem solving, or when you need the agent to think like an owner not a tool."
 version: 2.0.0
-homepage: https://PLACEHOLDER_OPENPIP_DOMAIN
+homepage: https://openpua.ai
 license: MIT
 ---
 

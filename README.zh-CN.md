@@ -1,22 +1,10 @@
 # pip
 
-<p align="center">
-  <img src="assets/hero.jpeg" alt="PIP Skill — 效率翻倍" width="250">
-</p>
-
 ### 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://PLACEHOLDER_OPENPIP_DOMAIN)
+[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
 
 **[🇺🇸 English](README.md)** | **🇨🇳 中文** | **[🇯🇵 日本語](README.ja.md)**
-
-<p align="center">
-  <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/xiao.jpg" alt="小助手微信" width="250">
-  <br>
-  <sub>扫码加入微信交流群 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 添加小助手微信</sub>
-</p>
 
 <p>
   <img src="https://img.shields.io/badge/Claude_Code-black?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code">
@@ -39,25 +27,25 @@
 
 ## 在线体验
 
-[https://PLACEHOLDER_OPENPIP_DOMAIN](https://PLACEHOLDER_OPENPIP_DOMAIN)
+[https://openpua.ai](https://openpua.ai)
 
-## 真实案例：MCP Server 注册问题调试
+## 真实案例：像素级匹配两个渲染器（88.7% → 99.5%）
 
-以下是一个真实的调试场景。agent-kms MCP server 加载失败，AI 在同一思路（改协议格式、猜版本号）上原地打转多次后，用户手动触发 `/pip`。
+ZenUML 有两条渲染路径 — HTML/React 和原生 SVG。SVG 渲染器需要在像素级别与 HTML 输出保持一致。在 93.6% 匹配率时，AI 一直在尝试同一类修复：抗锯齿调整、小数偏移量 — 同一思路，反复打转。PIP skill 强制切换到根本不同的方法论。
 
-**L3 触发 → 7 项检查清单强制执行：**
+**88.7% 基准 — 修复前：**
 
-![PIP L3 触发 — 停止猜测，执行系统化检查清单，从 MCP 日志中找到真正的错误信息](assets/pip1.jpg)
+![88.7% 基准 — 火柴人图标因尺寸过大和描边颜色错误显示大量不匹配](assets/pip1.png)
 
-**根因定位 → 从日志追踪到注册机制：**
+**93.6% 简单修复后 — AI 开始原地打转：**
 
-![根因发现 — claude mcp 管理的服务器注册方式和手动编辑 .claude.json 不同](assets/pip2.jpg)
+![93.6% 修复图标尺寸和颜色后 — 仍有散布的不匹配像素，AI 开始反复调整抗锯齿参数](assets/pip2.png)
 
-**复盘 → PIP 的实际效果：**
+**99.5% 最终结果 — PIP 方法论突破瓶颈：**
 
-![对话复盘 — PIP skill 强制停止原地打转，系统化检查清单驱动找到了之前从未检查过的 Claude Code MCP 日志目录](assets/pip3.jpg)
+![99.5% 最终结果 — 几乎所有像素匹配，仅剩 8 个不可消除的引擎差异像素](assets/pip3.png)
 
-**关键转折点：** PIP skill 强制 AI 停止在同一思路上打转（改协议格式、猜版本号），转而执行 7 项检查清单。逐字读错误信息 → 找到 Claude Code 自身的 MCP 日志目录 → 发现 `claude mcp` 的注册机制和手动编辑 `.claude.json` 不同 → 根因解决。
+**关键转折点：** PIP skill 强制 AI 停止调整抗锯齿参数，转而提取每个不匹配像素、按区域分类、测量两个渲染器中元素的实际位置。这揭示了一个 2px 的 CSS 盒模型偏移 — 任何参数调整都无法发现的问题 — 一次修复 83 个像素（93.6% → 98.5%）。理解 SVG 描边几何与 CSS 边框的差异又修复了 16 个像素（→ 99.5%）。剩余 8 个像素是 CSS 和 SVG 渲染引擎之间不可消除的差异。
 
 ## 问题：AI 的五大偷懒模式
 
@@ -443,7 +431,7 @@ High-Agency 可独立使用，也可**与 PIP v1 叠加**。叠加时：
 
 上传你的 Claude Code / Codex CLI 对话记录（`.jsonl`），帮助我们改进 PIP Skill 的效果。
 
-**[上传入口 →](https://PLACEHOLDER_OPENPIP_DOMAIN/#/contribute)**
+**[上传入口 →](https://openpua.ai/#/contribute)**
 
 上传的文件将用于 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PIP 策略对 AI 调试行为的影响。
 

@@ -389,14 +389,6 @@
     </div>
     <p class="install-hint">click to copy</p>
     <div style="display:flex;gap:24px;justify-content:center;align-items:flex-start;margin-top:1.5rem;flex-wrap:wrap">
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <img src="https://PLACEHOLDER_OPENPIP_DOMAIN/wechat-qr.jpg" alt="WeChat QR" style="width:180px;height:auto;border-radius:10px">
-        <div style="margin-top:0.5rem;text-align:center;font-size:0.8rem;color:#888">扫码加入微信交流群</div>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:center">
-        <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/xiao.jpg" alt="小助手微信" style="width:180px;height:auto;border-radius:10px">
-        <div style="margin-top:0.5rem;text-align:center;font-size:0.8rem;color:#888">添加小助手微信</div>
-      </div>
     </div>
   </section>
 
@@ -407,35 +399,35 @@
   </section>
 
   <section class="case-study">
-    <h2>Real-World Case: MCP Server Debug</h2>
-    <p class="desc">agent-kms MCP server 加载失败，AI 在同一思路上原地打转多次后，用户手动触发 /pip，L3 级检查清单强制系统化排查。</p>
+    <h2>Real-World Case: Pixel-Matching Two Renderers</h2>
+    <p class="desc">ZenUML's SVG renderer needed pixel-level parity with the HTML renderer. At 93.6% match, the AI kept tweaking anti-aliasing parameters. PIP forced a fundamentally different approach — systematic pixel forensics.</p>
 
     <div class="case-step">
       <div class="case-step-header">
         <div class="step-num">1</div>
-        <span>L3 触发 → 停止猜测，执行 7 项检查清单，从 MCP 日志中找到真正的错误信息</span>
+        <span>88.7% Baseline — icon size and stroke color mismatches identified</span>
       </div>
-      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip1.jpg" alt="PIP L3 triggered - 7 item checklist execution">
+      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip1.png" alt="88.7% baseline - heavy pixel mismatch before fixes">
     </div>
 
     <div class="case-step">
       <div class="case-step-header">
         <div class="step-num">2</div>
-        <span>根因发现 → claude mcp 注册方式和手动编辑 .claude.json 不同</span>
+        <span>93.6% After easy wins — AI starts spinning on same approach</span>
       </div>
-      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip2.jpg" alt="Root cause discovery - registration mechanism difference">
+      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip2.png" alt="93.6% after icon fixes - AI stuck tweaking anti-aliasing">
     </div>
 
     <div class="case-step">
       <div class="case-step-header">
         <div class="step-num">3</div>
-        <span>复盘 → PIP skill 强制停止原地打转，检查清单驱动找到之前从未检查过的 MCP 日志</span>
+        <span>99.5% PIP methodology broke through — pixel forensics found 2px CSS box-model offset</span>
       </div>
-      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip3.jpg" alt="Session recap - PIP skill actual effect">
+      <img src="https://raw.githubusercontent.com/mrcoder/pip/main/assets/pip3.png" alt="99.5% final result - nearly perfect pixel match">
     </div>
 
     <div class="case-summary">
-      <strong>关键转折点：</strong>PIP skill 强制 AI 停止在同一思路上打转（改协议格式、猜版本号），转而执行 7 项检查清单。逐字读错误信息 → 找到 Claude Code 自身的 MCP 日志目录 → 发现 claude mcp 的注册机制和手动编辑 .claude.json 不同 → 根因解决。
+      <strong>Key Turning Point:</strong> PIP forced the AI to stop tweaking anti-aliasing and instead extract every mismatch pixel, categorize by region, and measure actual positions. This revealed a 2px CSS box-model offset — fixing 83 pixels in one shot (93.6% → 98.5%). Understanding SVG stroke geometry vs CSS borders fixed 16 more (→ 99.5%).
     </div>
   </section>
 

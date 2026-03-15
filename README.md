@@ -1,22 +1,10 @@
 # pip
 
-<p align="center">
-  <img src="assets/hero.jpeg" alt="PIP Skill — Double Efficiency" width="250">
-</p>
-
 ### Double your Codex / Claude Code productivity and output
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://PLACEHOLDER_OPENPIP_DOMAIN)
+[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
 
 **[🇨🇳 中文](README.zh-CN.md)** | **[🇯🇵 日本語](README.ja.md)** | **🇺🇸 English**
-
-<p align="center">
-  <img src="assets/wechat-qr.jpg" alt="WeChat Group QR Code" width="250">
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="assets/xiao.jpg" alt="Add Assistant on WeChat" width="250">
-  <br>
-  <sub>Scan to join WeChat group &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Add assistant on WeChat</sub>
-</p>
 
 <p>
   <img src="https://img.shields.io/badge/Claude_Code-black?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code">
@@ -40,25 +28,25 @@ An AI Coding Agent skill plugin that uses corporate PIP rhetoric (Chinese versio
 
 ## Live Demo
 
-[https://PLACEHOLDER_OPENPIP_DOMAIN](https://PLACEHOLDER_OPENPIP_DOMAIN)
+[https://openpua.ai](https://openpua.ai)
 
-## Real Case: MCP Server Registration Debugging
+## Real Case: Pixel-Matching Two Renderers (88.7% → 99.5%)
 
-A real debugging scenario. The agent-kms MCP server failed to load. The AI kept spinning on the same approach (changing protocol format, guessing version numbers) multiple times until the user manually triggered `/pip`.
+A real debugging scenario. ZenUML has two rendering paths — HTML/React and native SVG. The SVG renderer needed to visually match the HTML output pixel-by-pixel. At 93.6% match, the AI kept trying anti-aliasing tweaks and fractional offsets — the same class of fix, over and over. The PIP skill forced a fundamentally different approach.
 
-**L3 Triggered → 7-Point Checklist Enforced:**
+**88.7% Baseline — Before Any Fixes:**
 
-![PIP L3 triggered — stopped guessing, executed systematic checklist, found real error in MCP logs](assets/pip1.jpg)
+![88.7% baseline — stick figure shows heavy mismatch due to oversized icon and wrong stroke color](assets/pip1.png)
 
-**Root Cause Located → Traced from Logs to Registration Mechanism:**
+**93.6% After Easy Wins — Then the AI Got Stuck:**
 
-![Root cause — claude mcp managed server registration differs from manual .claude.json editing](assets/pip2.jpg)
+![93.6% after icon size and color fixes — scattered mismatches remain, AI starts spinning on anti-aliasing tweaks](assets/pip2.png)
 
-**Retrospective → PIP's Actual Impact:**
+**99.5% Final Result — PIP Methodology Broke Through:**
 
-![Conversation retrospective — PIP skill forced stop on spinning, systematic checklist drove discovery of previously unchecked Claude Code MCP log directory](assets/pip3.jpg)
+![99.5% final — nearly all pixels match, only 8 irreducible engine-difference pixels remain](assets/pip3.png)
 
-**Key Turning Point:** The PIP skill forced the AI to stop spinning on the same approach (changing protocol format, guessing version numbers) and instead execute the 7-point checklist. Read error messages word by word → Found Claude Code's own MCP log directory → Discovered that `claude mcp` registration mechanism differs from manual `.claude.json` editing → Root cause resolved.
+**Key Turning Point:** The PIP skill forced the AI to stop tweaking anti-aliasing parameters and instead extract every mismatch pixel, categorize by region, and measure actual element positions. This revealed a 2px CSS box-model offset that no amount of parameter tweaking would have found — fixing 83 pixels in one shot (93.6% → 98.5%). Understanding SVG stroke geometry vs CSS border placement fixed 16 more (→ 99.5%). The remaining 8 pixels are irreducible differences between CSS and SVG rendering engines.
 
 ## The Problem: AI's Five Lazy Patterns
 
@@ -459,7 +447,7 @@ High-Agency works standalone or **stacked with PIP v1**. When stacked:
 
 Upload your Claude Code / Codex CLI conversation logs (`.jsonl`) to help us improve PIP Skill's effectiveness.
 
-**[Upload here ->](https://PLACEHOLDER_OPENPIP_DOMAIN/#/contribute)**
+**[Upload here ->](https://openpua.ai/#/contribute)**
 
 Uploaded files are used for Benchmark testing and Ablation Study analysis to quantify how different PIP strategies affect AI debugging behavior.
 
