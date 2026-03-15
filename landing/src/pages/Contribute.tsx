@@ -125,7 +125,7 @@ export default function Contribute({ lang }: Props) {
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div>
             <a href="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "0.75rem" }}>
-              <span style={{ fontWeight: 700, fontSize: "1.5rem", letterSpacing: "-0.025em" }}>pua</span>
+              <span style={{ fontWeight: 700, fontSize: "1.5rem", letterSpacing: "-0.025em" }}>pip</span>
               <span style={{ color: "var(--text-muted)", fontSize: "0.85rem" }}>/</span>
               <span style={{ fontSize: "0.95rem", fontWeight: 500 }}>{L("贡献数据", "Contribute")}</span>
             </a>
@@ -176,8 +176,8 @@ export default function Contribute({ lang }: Props) {
           <strong>{L("数据使用声明", "Data Usage Notice")}</strong>
           <br />
           {L(
-            "上传的 .jsonl 文件将用于 PUA Skill 的 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PUA 策略对 AI 调试行为的影响。上传即表示您同意将文件用于上述研究目的。我们不会公开您的原始文件内容。",
-            "Uploaded .jsonl files will be used for PUA Skill benchmark testing and ablation study analysis, helping quantify how different PUA strategies affect AI debugging behavior. By uploading, you agree to this research use. We will not publicly share your raw file contents."
+            "上传的 .jsonl 文件将用于 PIP Skill 的 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PIP 策略对 AI 调试行为的影响。上传即表示您同意将文件用于上述研究目的。我们不会公开您的原始文件内容。",
+            "Uploaded .jsonl files will be used for PIP Skill benchmark testing and ablation study analysis, helping quantify how different PIP strategies affect AI debugging behavior. By uploading, you agree to this research use. We will not publicly share your raw file contents."
           )}
         </div>
 
@@ -198,8 +198,8 @@ export default function Contribute({ lang }: Props) {
               </h2>
               <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", lineHeight: 1.7 }}>
                 {L(
-                  "上传你的 Claude Code / Codex CLI 对话记录（.jsonl），帮助我们改进 PUA Skill 的效果。",
-                  "Upload your Claude Code / Codex CLI conversation logs (.jsonl) to help us improve PUA Skill effectiveness."
+                  "上传你的 Claude Code / Codex CLI 对话记录（.jsonl），帮助我们改进 PIP Skill 的效果。",
+                  "Upload your Claude Code / Codex CLI conversation logs (.jsonl) to help us improve PIP Skill effectiveness."
                 )}
               </p>
             </div>

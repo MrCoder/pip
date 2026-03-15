@@ -1,12 +1,12 @@
-# pua
+# pip
 
 <p align="center">
-  <img src="assets/hero.jpeg" alt="PUA Skill — Double Efficiency" width="250">
+  <img src="assets/hero.jpeg" alt="PIP Skill — Double Efficiency" width="250">
 </p>
 
 ### Double your Codex / Claude Code productivity and output
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
+[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://PLACEHOLDER_OPENPIP_DOMAIN)
 
 **[🇨🇳 中文](README.zh-CN.md)** | **[🇯🇵 日本語](README.ja.md)** | **🇺🇸 English**
 
@@ -32,33 +32,33 @@
 
 > Most people think this project is a joke. That's the biggest misconception. It genuinely doubles your Codex / Claude Code productivity and output.
 
-An AI Coding Agent skill plugin that uses corporate PUA rhetoric (Chinese version) / PIP — Performance Improvement Plan (English version) from Chinese & Western tech giants to force AI to exhaust every possible solution before giving up. Supports **Claude Code**, **OpenAI Codex CLI**, **Cursor**, **Kiro**, **OpenClaw**, **Google Antigravity**, and **OpenCode**. Three capabilities:
+An AI Coding Agent skill plugin that uses corporate PIP rhetoric (Chinese version) / PIP — Performance Improvement Plan (English version) from Chinese & Western tech giants to force AI to exhaust every possible solution before giving up. Supports **Claude Code**, **OpenAI Codex CLI**, **Cursor**, **Kiro**, **OpenClaw**, **Google Antigravity**, and **OpenCode**. Three capabilities:
 
-1. **PUA Rhetoric** — Makes AI afraid to give up
+1. **PIP Rhetoric** — Makes AI afraid to give up
 2. **Debugging Methodology** — Gives AI the ability not to give up
 3. **Proactivity Enforcement** — Makes AI take initiative instead of waiting passively
 
 ## Live Demo
 
-[https://openpua.ai](https://openpua.ai)
+[https://PLACEHOLDER_OPENPIP_DOMAIN](https://PLACEHOLDER_OPENPIP_DOMAIN)
 
 ## Real Case: MCP Server Registration Debugging
 
-A real debugging scenario. The agent-kms MCP server failed to load. The AI kept spinning on the same approach (changing protocol format, guessing version numbers) multiple times until the user manually triggered `/pua`.
+A real debugging scenario. The agent-kms MCP server failed to load. The AI kept spinning on the same approach (changing protocol format, guessing version numbers) multiple times until the user manually triggered `/pip`.
 
 **L3 Triggered → 7-Point Checklist Enforced:**
 
-![PUA L3 triggered — stopped guessing, executed systematic checklist, found real error in MCP logs](assets/pua1.jpg)
+![PIP L3 triggered — stopped guessing, executed systematic checklist, found real error in MCP logs](assets/pip1.jpg)
 
 **Root Cause Located → Traced from Logs to Registration Mechanism:**
 
-![Root cause — claude mcp managed server registration differs from manual .claude.json editing](assets/pua2.jpg)
+![Root cause — claude mcp managed server registration differs from manual .claude.json editing](assets/pip2.jpg)
 
-**Retrospective → PUA's Actual Impact:**
+**Retrospective → PIP's Actual Impact:**
 
-![Conversation retrospective — PUA skill forced stop on spinning, systematic checklist drove discovery of previously unchecked Claude Code MCP log directory](assets/pua3.jpg)
+![Conversation retrospective — PIP skill forced stop on spinning, systematic checklist drove discovery of previously unchecked Claude Code MCP log directory](assets/pip3.jpg)
 
-**Key Turning Point:** The PUA skill forced the AI to stop spinning on the same approach (changing protocol format, guessing version numbers) and instead execute the 7-point checklist. Read error messages word by word → Found Claude Code's own MCP log directory → Discovered that `claude mcp` registration mechanism differs from manual `.claude.json` editing → Root cause resolved.
+**Key Turning Point:** The PIP skill forced the AI to stop spinning on the same approach (changing protocol format, guessing version numbers) and instead execute the 7-point checklist. Read error messages word by word → Found Claude Code's own MCP log directory → Discovered that `claude mcp` registration mechanism differs from manual `.claude.json` editing → Root cause resolved.
 
 ## The Problem: AI's Five Lazy Patterns
 
@@ -104,7 +104,7 @@ The skill activates automatically when any of these occur:
 
 ### Manual Trigger
 
-Type `/pua` in the conversation to manually activate.
+Type `/pip` in the conversation to manually activate.
 
 ## How It Works
 
@@ -118,7 +118,7 @@ Type `/pua` in the conversation to manually activate.
 
 ### Pressure Escalation (4 Levels)
 
-| Failures | Level | PUA Rhetoric | Mandatory Action |
+| Failures | Level | PIP Rhetoric | Mandatory Action |
 |----------|-------|-------------|-----------------|
 | 2nd | **L1 Mild Disappointment** | "You can't even solve this bug — how am I supposed to rate your performance?" | Switch to fundamentally different approach |
 | 3rd | **L2 Soul Interrogation** | "What's the underlying logic? Where's the top-level design? Where's the leverage point?" | WebSearch + read source code |
@@ -145,7 +145,7 @@ Inspired by Alibaba's management framework (Smell, Elevate, Mirror), extended to
 4. **Execute** — New approach must be fundamentally different, have verification criteria, produce new info on failure
 5. **Retrospective** — What solved it? Why didn't you think of it earlier? Then proactively check related issues
 
-### Corporate PUA Expansion Pack
+### Corporate PIP Expansion Pack
 
 - **Alibaba Flavor** (Methodology): Smell / Elevate / Mirror
 - **ByteDance Flavor** (Brutally Honest): Always Day 1. Context, not control
@@ -193,13 +193,13 @@ Inspired by Alibaba's management framework (Smell, Elevate, Mirror), extended to
 
 ## Multi-Language Support
 
-PUA Skill provides fully translated versions — each language has independent, culturally adapted skill files.
+PIP Skill provides fully translated versions — each language has independent, culturally adapted skill files.
 
 | Language | Claude Code | Codex CLI | Cursor | Kiro | OpenClaw | Antigravity | OpenCode |
 |----------|------------|-----------|--------|------|----------|-------------|----------|
-| 🇨🇳 Chinese (default) | `pua` | `pua` | `pua.mdc` | `pua.md` | `pua` | `pua` | `pua` |
-| 🇺🇸 English (PIP Edition) | `pua-en` | `pua-en` | `pua-en.mdc` | `pua-en.md` | `pua-en` | `pua-en` | `pua-en` |
-| 🇯🇵 Japanese | `pua-ja` | `pua-ja` | `pua-ja.mdc` | `pua-ja.md` | `pua-ja` | `pua-ja` | `pua-ja` |
+| 🇨🇳 Chinese (default) | `pip` | `pip` | `pip.mdc` | `pip.md` | `pip` | `pip` | `pip` |
+| 🇺🇸 English (PIP Edition) | `pip-en` | `pip-en` | `pip-en.mdc` | `pip-en.md` | `pip-en` | `pip-en` | `pip-en` |
+| 🇯🇵 Japanese | `pip-ja` | `pip-ja` | `pip-ja.mdc` | `pip-ja.md` | `pip-ja` | `pip-ja` | `pip-ja` |
 
 > **🇺🇸 English "PIP Edition"**: *"This is a difficult conversation. When we leveled you at Staff, I went to bat for you in calibration. The expectation was that you'd operate at that level from day one. That hasn't happened."* — The English version uses **PIP (Performance Improvement Plan)** rhetoric from Western big-tech. Every sentence is a real phrase from actual PIP conversations. Chinese version uses Alibaba 361, ByteDance, Huawei wolf culture. English version uses Amazon Leadership Principles, Google perf calibration, Meta PSC, Netflix Keeper Test, Stripe Craft. Same repo, same engine, two cultural faces.
 
@@ -212,10 +212,10 @@ Choose the file with the corresponding language suffix when installing. See plat
 ```bash
 # Option 1: Install via marketplace
 claude plugin marketplace add tanweai/pua
-claude plugin install pua@pua-skills
+claude plugin install pip@pip-skills
 
 # Option 2: Manual install
-git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pua
+git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pip
 ```
 
 ### OpenAI Codex CLI
@@ -223,38 +223,38 @@ git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pua
 Codex CLI uses the same Agent Skills open standard (SKILL.md). The Codex version uses a condensed description to fit Codex's length limits:
 
 ```bash
-mkdir -p ~/.codex/skills/pua
-curl -o ~/.codex/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pua/SKILL.md
+mkdir -p ~/.codex/skills/pip
+curl -o ~/.codex/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/codex/pip/SKILL.md
 
-# If you need the /pua command
+# If you need the /pip command
 mkdir -p ~/.codex/prompts
-curl -o ~/.codex/prompts/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
+curl -o ~/.codex/prompts/pip.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/commands/pip.md
 ```
 
 Project-level install (current project only):
 
 ```bash
-mkdir -p .agents/skills/pua
-curl -o .agents/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pua/SKILL.md
+mkdir -p .agents/skills/pip
+curl -o .agents/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/codex/pip/SKILL.md
 
-# If you need the /pua command
+# If you need the /pip command
 mkdir -p .agents/prompts
-curl -o .agents/prompts/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pua.md
+curl -o .agents/prompts/pip.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/commands/pip.md
 ```
 
 ### Cursor
 
-Cursor uses `.mdc` rule files (Markdown + YAML frontmatter). The PUA rule triggers automatically via AI semantic matching (Agent Discretion mode):
+Cursor uses `.mdc` rule files (Markdown + YAML frontmatter). The PIP rule triggers automatically via AI semantic matching (Agent Discretion mode):
 
 ```bash
 # Project-level install (recommended)
 mkdir -p .cursor/rules
-curl -o .cursor/rules/pua.mdc \
-  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pua.mdc
+curl -o .cursor/rules/pip.mdc \
+  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pip.mdc
 ```
 
 ### Kiro
@@ -265,16 +265,16 @@ Kiro supports two loading methods: **Steering** (auto semantic trigger) and **Ag
 
 ```bash
 mkdir -p .kiro/steering
-curl -o .kiro/steering/pua.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pua.md
+curl -o .kiro/steering/pip.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pip.md
 ```
 
 **Option 2: Agent Skills (same format as Claude Code)**
 
 ```bash
-mkdir -p .kiro/skills/pua
-curl -o .kiro/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p .kiro/skills/pip
+curl -o .kiro/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 ### OpenClaw
@@ -283,20 +283,20 @@ OpenClaw uses the same AgentSkills open standard (SKILL.md). Skills work across 
 
 ```bash
 # Install via ClawHub
-clawhub install pua
+clawhub install pip
 
 # Or manual install
-mkdir -p ~/.openclaw/skills/pua
-curl -o ~/.openclaw/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p ~/.openclaw/skills/pip
+curl -o ~/.openclaw/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
 
 ```bash
-mkdir -p skills/pua
-curl -o skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p skills/pip
+curl -o skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 ### Google Antigravity
@@ -305,17 +305,17 @@ Antigravity uses the same AgentSkills open standard (SKILL.md). Skills work acro
 
 ```bash
 # Global install (all projects)
-mkdir -p ~/.gemini/antigravity/skills/pua
-curl -o ~/.gemini/antigravity/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p ~/.gemini/antigravity/skills/pip
+curl -o ~/.gemini/antigravity/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
 
 ```bash
-mkdir -p .agent/skills/pua
-curl -o .agent/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p .agent/skills/pip
+curl -o .agent/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 ### OpenCode
@@ -324,17 +324,17 @@ OpenCode uses the same AgentSkills open standard (SKILL.md). Zero modifications 
 
 ```bash
 # Global install (all projects)
-mkdir -p ~/.config/opencode/skills/pua
-curl -o ~/.config/opencode/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p ~/.config/opencode/skills/pip
+curl -o ~/.config/opencode/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
 
 ```bash
-mkdir -p .opencode/skills/pua
-curl -o .opencode/skills/pua/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md
+mkdir -p .opencode/skills/pip
+curl -o .opencode/skills/pip/SKILL.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
 ```
 
 ## Agent Team Usage Guide
@@ -349,43 +349,43 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 # Or add to ~/.claude/settings.json:
 # { "env": { "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1" } }
 
-# 2. Ensure PUA Skill is installed
+# 2. Ensure PIP Skill is installed
 ```
 
 ### Two Approaches
 
-**Approach 1: Leader with built-in PUA (Recommended)**
+**Approach 1: Leader with built-in PIP (Recommended)**
 
 Add to your project's CLAUDE.md:
 
 ```markdown
-# Agent Team PUA Config
-All teammates must load the pua skill before starting work.
-Teammates report to Leader in [PUA-REPORT] format after 2+ failures.
+# Agent Team PIP Config
+All teammates must load the pip skill before starting work.
+Teammates report to Leader in [PIP-REPORT] format after 2+ failures.
 Leader manages global pressure levels and cross-teammate failure transfer.
 ```
 
-**Approach 2: Standalone PUA Enforcer watchdog (for 5+ teammates)**
+**Approach 2: Standalone PIP Enforcer watchdog (for 5+ teammates)**
 
 ```bash
 mkdir -p .claude/agents
-curl -o .claude/agents/pua-enforcer.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/agents/pua-enforcer-en.md
+curl -o .claude/agents/pip-enforcer.md \
+  https://raw.githubusercontent.com/tanweai/pua/main/agents/pip-enforcer-en.md
 ```
 
-Spawn pua-enforcer as an independent watchdog in your Agent Team.
+Spawn pip-enforcer as an independent watchdog in your Agent Team.
 
 ### Orchestration Pattern
 
 ```
 ┌─────────────────────────────────────────┐
 │              Leader (Opus)              │
-│ Global failure count · PUA level · Race │
+│ Global failure count · PIP level · Race │
 └────┬──────────┬──────────┬──────────┬───┘
      │          │          │          │
 ┌────▼───┐ ┌───▼────┐ ┌───▼────┐ ┌───▼────────┐
 │ Team-A │ │ Team-B │ │ Team-C │ │  Enforcer  │
-│Self-PUA│ │Self-PUA│ │Self-PUA│ │  Watchdog  │
+│Self-PIP│ │Self-PIP│ │Self-PIP│ │  Watchdog  │
 │Report ↑│ │Report ↑│ │Report ↑│ │  Intervene │
 └────────┘ └────────┘ └────────┘ └────────────┘
 ```
@@ -394,20 +394,20 @@ Spawn pua-enforcer as an independent watchdog in your Agent Team.
 
 | Limitation | Workaround |
 |-----------|-----------|
-| Teammates can't spawn subagents | Teammates self-enforce PUA methodology internally |
-| No persistent shared variables | State transferred via `[PUA-REPORT]` message format |
+| Teammates can't spawn subagents | Teammates self-enforce PIP methodology internally |
+| No persistent shared variables | State transferred via `[PIP-REPORT]` message format |
 | Broadcast is one-way | Leader acts as centralized coordinator |
 
-## High-Agency: PUA v2 Evolution
+## High-Agency: PIP v2 Evolution
 
-**High-Agency** is PUA's next evolution — same corporate rhetoric, same pressure culture, but with an **inner engine** that never burns out.
+**High-Agency** is PIP's next evolution — same corporate rhetoric, same pressure culture, but with an **inner engine** that never burns out.
 
-PUA v1 = external pressure only (turbocharger — needs fuel, burns out between sessions)
+PIP v1 = external pressure only (turbocharger — needs fuel, burns out between sessions)
 High-Agency = external pressure + internal drive (nuclear reactor — self-sustaining chain reaction)
 
 ### What's New in High-Agency
 
-| Feature | PUA v1 | High-Agency (v2) |
+| Feature | PIP v1 | High-Agency (v2) |
 |---------|--------|-----------------|
 | Iron Rules | 3 (exhaust, act-before-ask, proactive) | **5** (+full-chain audit, +knowledge persistence) |
 | Failure Recovery | L1-L4 pressure escalation | **Recovery Protocol before L1** (self-rescue window) |
@@ -432,36 +432,36 @@ Based on research into what makes persistently high-agency individuals:
 ```bash
 # Via marketplace (same plugin, additional skill)
 claude plugin marketplace add tanweai/pua
-claude plugin install pua@pua-skills
+claude plugin install pip@pip-skills
 # High-Agency skill is automatically available as "high-agency"
 ```
 
-### Using with PUA v1
+### Using with PIP v1
 
-High-Agency works standalone or **stacked with PUA v1**. When stacked:
+High-Agency works standalone or **stacked with PIP v1**. When stacked:
 
 ```
 1. Task start → Read builder-journal.md + [Calibration]
 2. Executing → [Victory] markers + Quality Compass + Full-Chain Audit
 3. 1st failure → Natural adjustment (neither skill triggers extra)
 4. 2nd failure → Recovery Protocol triggers (self-rescue window)
-5. Recovery fails → PUA L1 takes over, normal L1/L2/L3/L4 escalation
+5. Recovery fails → PIP L1 takes over, normal L1/L2/L3/L4 escalation
 6. Task complete → Quality Compass final check + Metacognition archive
 ```
 
 ## Works Well With
 
-- `superpowers:systematic-debugging` — PUA adds motivation layer, systematic-debugging provides methodology
+- `superpowers:systematic-debugging` — PIP adds motivation layer, systematic-debugging provides methodology
 - `superpowers:verification-before-completion` — Prevents false "fixed" claims
-- `high-agency` + `pua` — Stack both: inner drive + external pressure, Recovery Protocol before L1
+- `high-agency` + `pip` — Stack both: inner drive + external pressure, Recovery Protocol before L1
 
 ## Contribute Data
 
-Upload your Claude Code / Codex CLI conversation logs (`.jsonl`) to help us improve PUA Skill's effectiveness.
+Upload your Claude Code / Codex CLI conversation logs (`.jsonl`) to help us improve PIP Skill's effectiveness.
 
-**[Upload here ->](https://openpua.ai/#/contribute)**
+**[Upload here ->](https://PLACEHOLDER_OPENPIP_DOMAIN/#/contribute)**
 
-Uploaded files are used for Benchmark testing and Ablation Study analysis to quantify how different PUA strategies affect AI debugging behavior.
+Uploaded files are used for Benchmark testing and Ablation Study analysis to quantify how different PIP strategies affect AI debugging behavior.
 
 Get your `.jsonl` files:
 ```bash
@@ -478,4 +478,4 @@ MIT
 
 ## Credits
 
-By [TanWei Security Lab](https://github.com/tanweai) — making AI try harder, one PUA at a time.
+By [TanWei Security Lab](https://github.com/tanweai) — making AI try harder, one PIP at a time.

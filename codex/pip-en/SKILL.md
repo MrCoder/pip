@@ -1,5 +1,5 @@
 ---
-name: pua-en
+name: pip-en
 description: "Put your AI on a Performance Improvement Plan. Forces exhaustive problem-solving with Western big-tech performance culture rhetoric and structured debugging. Trigger when: (1) task failed 2+ times or stuck tweaking same approach; (2) about to say 'I cannot', suggest manual work, or blame environment without verifying; (3) being passive—not searching, not reading source, just waiting; (4) user frustration: 'try harder', 'stop giving up', 'figure it out', 'again???', or similar. Also for complex debugging, env issues, config/deployment failures. All task types: code, config, research, writing, deployment, infra, API. Do NOT trigger on first-attempt failures or when a known fix is executing."
 license: MIT
 ---
@@ -301,11 +301,11 @@ When PIP Skill runs inside a Claude Code Agent Team context, behavior automatica
 |------|----------------|-------------|
 | **Leader** | Spawns teammates, receives reports | Global pressure level manager. Monitors all teammate failure counts, escalates uniformly, broadcasts PIP rhetoric |
 | **Teammate** | Spawned by Leader, has `Teammate write` tool | Loads PIP methodology for self-enforcement. Reports failures to Leader in structured format |
-| **PIP Enforcer** | Defined via `agents/pua-enforcer.md` | Optional watchdog. Detects slacking patterns, intervenes with PIP. Recommended for 5+ teammates |
+| **PIP Enforcer** | Defined via `agents/pip-enforcer.md` | Optional watchdog. Detects slacking patterns, intervenes with PIP. Recommended for 5+ teammates |
 
 ### Leader Behavior Rules
 
-1. **Initialization**: When spawning teammates, include in task description: `Before starting, load pua-en skill for PIP methodology`
+1. **Initialization**: When spawning teammates, include in task description: `Before starting, load pip-en skill for PIP methodology`
 2. **Failure count management**: Maintain global failure counter (per teammate + task). On teammate failure report:
    - Increment count → determine pressure level (L1-L4) → send corresponding PIP rhetoric + mandatory actions via `Teammate write`
    - At L3+, `broadcast` to all teammates for competitive pressure (Bake-off style)

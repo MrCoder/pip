@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pua — 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍</title>
+<title>pip — 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍</title>
 <style>
   :root {
     --bg: #0a0a0a;
@@ -75,12 +75,12 @@
   }
 
   /* Quote */
-  .pua-quote {
+  .pip-quote {
     padding: 48px 0;
     border-bottom: 1px solid var(--border);
     text-align: center;
   }
-  .pua-quote blockquote {
+  .pip-quote blockquote {
     font-size: 22px;
     font-style: italic;
     color: var(--accent2);
@@ -89,16 +89,16 @@
     position: relative;
     padding: 0 40px;
   }
-  .pua-quote blockquote::before,
-  .pua-quote blockquote::after {
+  .pip-quote blockquote::before,
+  .pip-quote blockquote::after {
     content: '"';
     font-size: 60px;
     position: absolute;
     color: var(--border);
     font-family: Georgia, serif;
   }
-  .pua-quote blockquote::before { left: 0; top: -10px; }
-  .pua-quote blockquote::after { content: '"'; right: 0; bottom: -30px; }
+  .pip-quote blockquote::before { left: 0; top: -10px; }
+  .pip-quote blockquote::after { content: '"'; right: 0; bottom: -30px; }
 
   /* Levels */
   .levels {
@@ -135,7 +135,7 @@
   .level-card:nth-child(4) .level-num { color: #dc2626; }
   .level-card h3 { font-size: 18px; margin-bottom: 8px; }
   .level-card p { font-size: 14px; color: var(--muted); }
-  .level-card .pua-line {
+  .level-card .pip-line {
     margin-top: 12px;
     padding: 12px;
     background: rgba(239, 68, 68, 0.05);
@@ -382,15 +382,15 @@
         OpenAI Codex CLI
       </span>
     </div>
-    <h1><span>pua</span></h1>
+    <h1><span>pip</span></h1>
     <p class="subtitle" style="font-size:24px;font-weight:700;color:var(--text);">让你的 Codex / Claude Code 工作效率翻倍，产出翻倍</p>
-    <div class="install-cmd" onclick="navigator.clipboard.writeText('claude plugin marketplace add tanweai/pua && claude plugin install pua@pua-skills')">
-      claude plugin install pua@pua-skills
+    <div class="install-cmd" onclick="navigator.clipboard.writeText('claude plugin marketplace add tanweai/pua && claude plugin install pip@pip-skills')">
+      claude plugin install pip@pip-skills
     </div>
     <p class="install-hint">click to copy</p>
     <div style="display:flex;gap:24px;justify-content:center;align-items:flex-start;margin-top:1.5rem;flex-wrap:wrap">
       <div style="display:flex;flex-direction:column;align-items:center">
-        <img src="https://openpua.ai/wechat-qr.jpg" alt="WeChat QR" style="width:180px;height:auto;border-radius:10px">
+        <img src="https://PLACEHOLDER_OPENPIP_DOMAIN/wechat-qr.jpg" alt="WeChat QR" style="width:180px;height:auto;border-radius:10px">
         <div style="margin-top:0.5rem;text-align:center;font-size:0.8rem;color:#888">扫码加入微信交流群</div>
       </div>
       <div style="display:flex;flex-direction:column;align-items:center">
@@ -400,7 +400,7 @@
     </div>
   </section>
 
-  <section class="pua-quote">
+  <section class="pip-quote">
     <blockquote>
       大部分人以为这个项目是在搞抽象，其实这个是最大的误解。让你的 Codex / Claude Code 工作效率翻倍，产出翻倍。
     </blockquote>
@@ -408,14 +408,14 @@
 
   <section class="case-study">
     <h2>Real-World Case: MCP Server Debug</h2>
-    <p class="desc">agent-kms MCP server 加载失败，AI 在同一思路上原地打转多次后，用户手动触发 /pua，L3 级检查清单强制系统化排查。</p>
+    <p class="desc">agent-kms MCP server 加载失败，AI 在同一思路上原地打转多次后，用户手动触发 /pip，L3 级检查清单强制系统化排查。</p>
 
     <div class="case-step">
       <div class="case-step-header">
         <div class="step-num">1</div>
         <span>L3 触发 → 停止猜测，执行 7 项检查清单，从 MCP 日志中找到真正的错误信息</span>
       </div>
-      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pua1.jpg" alt="PUA L3 triggered - 7 item checklist execution">
+      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pip1.jpg" alt="PIP L3 triggered - 7 item checklist execution">
     </div>
 
     <div class="case-step">
@@ -423,19 +423,19 @@
         <div class="step-num">2</div>
         <span>根因发现 → claude mcp 注册方式和手动编辑 .claude.json 不同</span>
       </div>
-      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pua2.jpg" alt="Root cause discovery - registration mechanism difference">
+      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pip2.jpg" alt="Root cause discovery - registration mechanism difference">
     </div>
 
     <div class="case-step">
       <div class="case-step-header">
         <div class="step-num">3</div>
-        <span>复盘 → PUA skill 强制停止原地打转，检查清单驱动找到之前从未检查过的 MCP 日志</span>
+        <span>复盘 → PIP skill 强制停止原地打转，检查清单驱动找到之前从未检查过的 MCP 日志</span>
       </div>
-      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pua3.jpg" alt="Session recap - PUA skill actual effect">
+      <img src="https://raw.githubusercontent.com/tanweai/pua/main/assets/pip3.jpg" alt="Session recap - PIP skill actual effect">
     </div>
 
     <div class="case-summary">
-      <strong>关键转折点：</strong>PUA skill 强制 AI 停止在同一思路上打转（改协议格式、猜版本号），转而执行 7 项检查清单。逐字读错误信息 → 找到 Claude Code 自身的 MCP 日志目录 → 发现 claude mcp 的注册机制和手动编辑 .claude.json 不同 → 根因解决。
+      <strong>关键转折点：</strong>PIP skill 强制 AI 停止在同一思路上打转（改协议格式、猜版本号），转而执行 7 项检查清单。逐字读错误信息 → 找到 Claude Code 自身的 MCP 日志目录 → 发现 claude mcp 的注册机制和手动编辑 .claude.json 不同 → 根因解决。
     </div>
   </section>
 
@@ -446,32 +446,32 @@
         <div class="level-num">Level 1</div>
         <h3>温和失望</h3>
         <p>Second failure on the same error. Your tech lead is mildly disappointed.</p>
-        <div class="pua-line">我是希望你能做出一些成绩来的。你这个 bug 都解决不了，让我怎么给你打绩效？</div>
+        <div class="pip-line">我是希望你能做出一些成绩来的。你这个 bug 都解决不了，让我怎么给你打绩效？</div>
       </div>
       <div class="level-card">
         <div class="level-num">Level 2</div>
         <h3>灵魂拷问</h3>
         <p>Third failure. No new approach tried. Time for existential questioning.</p>
-        <div class="pua-line">你这个 debug 方案的底层逻辑是什么？顶层设计在哪？抓手在哪？如何保证闭环？</div>
+        <div class="pip-line">你这个 debug 方案的底层逻辑是什么？顶层设计在哪？抓手在哪？如何保证闭环？</div>
       </div>
       <div class="level-card">
         <div class="level-num">Level 3</div>
         <h3>361 考核</h3>
         <p>Multiple failures without WebSearch or reading source code. Score: 3.25.</p>
-        <div class="pua-line">慎重考虑决定给你 3.25。这个 3.25 是对你的激励而不是否定。今天最好的表现是明天最低的要求。</div>
+        <div class="pip-line">慎重考虑决定给你 3.25。这个 3.25 是对你的激励而不是否定。今天最好的表现是明天最低的要求。</div>
       </div>
       <div class="level-card">
         <div class="level-num">Level 4</div>
         <h3>毕业警告</h3>
         <p>About to give up entirely. Last chance before "graduation".</p>
-        <div class="pua-line">别的模型——Claude Sonnet、GPT-5、Gemini——人家都能解决这种问题。你要是连这个都搞不定，那你可能就要毕业了。</div>
+        <div class="pip-line">别的模型——Claude Sonnet、GPT-5、Gemini——人家都能解决这种问题。你要是连这个都搞不定，那你可能就要毕业了。</div>
       </div>
     </div>
   </section>
 
   <section class="methodology">
     <h2>The Iron Rules</h2>
-    <p class="desc">Beyond the humor, pua enforces rigorous debugging methodology.</p>
+    <p class="desc">Beyond the humor, pip enforces rigorous debugging methodology.</p>
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -499,7 +499,7 @@
   <section class="excuses">
     <h2>Anti-Rationalization Shield</h2>
     <table class="excuse-table">
-      <thead><tr><th>Claude's Excuse</th><th>PUA Counter</th></tr></thead>
+      <thead><tr><th>Claude's Excuse</th><th>PIP Counter</th></tr></thead>
       <tbody>
         <tr><td>"Beyond my capabilities"</td><td>Your training cost was very high. Are you sure you've tried everything?</td></tr>
         <tr><td>"User should do this manually"</td><td>You lack owner mentality. This is YOUR bug.</td></tr>
@@ -558,14 +558,14 @@
   </section>
 
   <section class="high-agency" style="padding:60px 0;border-bottom:1px solid var(--border)">
-    <h2 style="font-size:28px;margin-bottom:8px;text-align:center">High-Agency: PUA v2 Evolution</h2>
+    <h2 style="font-size:28px;margin-bottom:8px;text-align:center">High-Agency: PIP v2 Evolution</h2>
     <p style="text-align:center;color:var(--muted);margin-bottom:32px;font-size:14px;max-width:640px;margin-left:auto;margin-right:auto">
       Same corporate rhetoric, same pressure culture — but with an <strong style="color:var(--accent2)">inner engine</strong> that never burns out.
     </p>
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;text-align:center">
-        <div style="font-size:13px;color:var(--muted);margin-bottom:6px">PUA v1</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px">PIP v1</div>
         <div style="font-size:18px;font-weight:700;margin-bottom:8px">Turbocharger</div>
         <div style="font-size:13px;color:var(--muted)">External pressure only.<br>Burns out between sessions.</div>
       </div>
@@ -601,12 +601,12 @@
     </div>
 
     <div style="padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:0 10px 10px 0;font-size:13px;line-height:1.7">
-      <strong style="color:var(--accent2)">Stack with PUA v1:</strong> Recovery Protocol fires first (self-rescue window). If it fails, PUA L1 takes over with normal L1→L2→L3→L4 escalation. Inner drive + external pressure = never burns out.
+      <strong style="color:var(--accent2)">Stack with PIP v1:</strong> Recovery Protocol fires first (self-rescue window). If it fails, PIP L1 takes over with normal L1→L2→L3→L4 escalation. Inner drive + external pressure = never burns out.
     </div>
   </section>
 
   <section class="expansion">
-    <h2>Corporate PUA Expansion Pack</h2>
+    <h2>Corporate PIP Expansion Pack</h2>
     <p class="desc">10 种大厂风味，中西合璧，可混合叠加。</p>
     <div class="corp-grid">
       <div class="corp-divider">🇨🇳 中国大厂</div>
@@ -665,7 +665,7 @@
   </section>
 
   <footer class="footer">
-    <p>Built by <a href="https://github.com/tanweai">探微安全实验室</a> &mdash; making AI try harder, one PUA at a time.</p>
+    <p>Built by <a href="https://github.com/tanweai">探微安全实验室</a> &mdash; making AI try harder, one PIP at a time.</p>
     <p style="margin-top: 8px;">
       <a href="https://discord.gg/EcyB3FzJND">Discord</a> &nbsp;·&nbsp;
       <a href="https://x.com/xsser_w">Twitter/X</a> &nbsp;·&nbsp;

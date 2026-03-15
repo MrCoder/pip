@@ -50,10 +50,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   en: [
     [{ text: "# Install", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# Or trigger manually", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# Auto-activates when Claude says \"I cannot\"...", cls: "comment" }],
     [{ text: "" }],
@@ -65,10 +65,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   zh: [
     [{ text: "# 安装", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# 或手动触发", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# 当 Claude 说「我无法解决」时自动激活...", cls: "comment" }],
     [{ text: "" }],
@@ -80,10 +80,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   ja: [
     [{ text: "# インストール", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# または手動トリガー", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# Claudeが「解決できません」と言った時に自動発動...", cls: "comment" }],
     [{ text: "" }],
@@ -95,10 +95,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   fr: [
     [{ text: "# Installer", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# Ou déclencher manuellement", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# S'active quand Claude dit « Je ne peux pas »...", cls: "comment" }],
     [{ text: "" }],
@@ -110,10 +110,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   de: [
     [{ text: "# Installieren", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# Oder manuell auslösen", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# Aktiviert sich wenn Claude \"Ich kann nicht\" sagt...", cls: "comment" }],
     [{ text: "" }],
@@ -125,10 +125,10 @@ const HERO_LINES: Record<Lang, CLine[]> = {
   ar: [
     [{ text: "# التثبيت", cls: "comment" }],
     [{ text: "claude plugin marketplace add tanweai/pua" }],
-    [{ text: "claude plugin install pua@pua-skills" }],
+    [{ text: "claude plugin install pip@pip-skills" }],
     [{ text: "" }],
     [{ text: "# أو التشغيل يدوياً", cls: "comment" }],
-    [{ text: "/pua", cls: "keyword" }],
+    [{ text: "/pip", cls: "keyword" }],
     [{ text: "" }],
     [{ text: "# يتفعل تلقائياً عندما يقول Claude \"لا أستطيع\"...", cls: "comment" }],
     [{ text: "" }],
@@ -201,7 +201,7 @@ function MobileScenarioCards({ lang, L }: { lang: Lang; L: (value: Record<Lang, 
               <p>{scenario.without}</p>
             </div>
             <div className="comparison-panel">
-              <span className="comparison-label">With PUA</span>
+              <span className="comparison-label">With PIP</span>
               <p>{scenario.with}</p>
             </div>
           </div>
@@ -237,23 +237,23 @@ function InstallTabs({ L }: { L: (value: Record<Lang, string>) => string }) {
   const content = {
     claude: {
       desc: L(inline.claudeDesc),
-      code: "claude plugin marketplace add tanweai/pua\nclaude plugin install pua@pua-skills",
+      code: "claude plugin marketplace add tanweai/pua\nclaude plugin install pip@pip-skills",
     },
     codex: {
       desc: L(inline.codexDesc),
-      code: "mkdir -p ~/.codex/skills/pua\ncurl -o ~/.codex/skills/pua/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/codex/pua/SKILL.md",
+      code: "mkdir -p ~/.codex/skills/pip\ncurl -o ~/.codex/skills/pip/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/codex/pip/SKILL.md",
     },
     cursor: {
       desc: L(inline.cursorDesc),
-      code: "mkdir -p .cursor/rules\ncurl -o .cursor/rules/pua.mdc \\\n  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pua.mdc",
+      code: "mkdir -p .cursor/rules\ncurl -o .cursor/rules/pip.mdc \\\n  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pip.mdc",
     },
     kiro: {
       desc: L(inline.kiroDesc),
-      code: "# Steering 方式\nmkdir -p .kiro/steering\ncurl -o .kiro/steering/pua.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pua.md",
+      code: "# Steering 方式\nmkdir -p .kiro/steering\ncurl -o .kiro/steering/pip.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pip.md",
     },
     project: {
       desc: L(inline.projectDesc),
-      code: "mkdir -p .agents/skills/pua\ncurl -o .agents/skills/pua/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/skills/pua/SKILL.md",
+      code: "mkdir -p .agents/skills/pip\ncurl -o .agents/skills/pip/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md",
     },
   }
 
@@ -373,7 +373,7 @@ export default function App() {
       <nav className={`glass-nav ${navScrolled ? "scrolled" : ""}`}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0.625rem 1.5rem" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
-            <a href="#" style={{ fontWeight: 800, fontSize: "1.1rem", textDecoration: "none", letterSpacing: "-0.03em", color: "var(--accent)" }}>pua</a>
+            <a href="#" style={{ fontWeight: 800, fontSize: "1.1rem", textDecoration: "none", letterSpacing: "-0.03em", color: "var(--accent)" }}>pip</a>
             <div className="top-links">
               <a href="https://t.me/+wBWh6h-h1RhiZTI1" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem" }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
@@ -405,7 +405,7 @@ export default function App() {
                 <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
                 {L(inline.v11Badge)}
               </div>
-              <h1><TextReveal text="pua" delay={0.2} /></h1>
+              <h1><TextReveal text="pip" delay={0.2} /></h1>
             </motion.div>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}>
               <p className="subtitle"><strong>{L(t.heroSub)}</strong></p>
@@ -498,9 +498,9 @@ export default function App() {
         <FadeIn><SHd title={L(t.caseTitle)} desc={L(t.caseDesc)} /></FadeIn>
         <div style={{ maxWidth: "48rem", margin: "0 auto", display: "flex", flexDirection: "column", gap: "2rem" }}>
           {[
-            { img: "/pua1.jpg", step: "01", desc: L(t.caseStep1) },
-            { img: "/pua2.jpg", step: "02", desc: L(t.caseStep2) },
-            { img: "/pua3.jpg", step: "03", desc: L(t.caseStep3) },
+            { img: "/pip1.jpg", step: "01", desc: L(t.caseStep1) },
+            { img: "/pip2.jpg", step: "02", desc: L(t.caseStep2) },
+            { img: "/pip3.jpg", step: "03", desc: L(t.caseStep3) },
           ].map((c, i) => (
             <FadeIn key={c.step} delay={i * 0.15}>
               <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
@@ -764,7 +764,7 @@ export default function App() {
                   <th style={{ width: "41%" }}>
                     <span style={{ display: "inline-flex", alignItems: "center", gap: "0.375rem" }}>
                       <span style={{ width: "0.5rem", height: "0.5rem", borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                      With PUA
+                      With PIP
                     </span>
                   </th>
                 </tr>
@@ -853,8 +853,8 @@ export default function App() {
                 {L(inline.manualDesc)}
               </p>
               <div className="code-inline">
-                /pua
-                <CopyBtn text="/pua" />
+                /pip
+                <CopyBtn text="/pip" />
               </div>
             </SpotlightCard>
           </StaggerItem>
