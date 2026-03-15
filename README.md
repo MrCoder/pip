@@ -211,11 +211,11 @@ Choose the file with the corresponding language suffix when installing. See plat
 
 ```bash
 # Option 1: Install via marketplace
-claude plugin marketplace add tanweai/pua
+claude plugin marketplace add mrcoder/pip
 claude plugin install pip@pip-skills
 
 # Option 2: Manual install
-git clone https://github.com/tanweai/pua.git ~/.claude/plugins/pip
+git clone https://github.com/mrcoder/pip.git ~/.claude/plugins/pip
 ```
 
 ### OpenAI Codex CLI
@@ -225,12 +225,12 @@ Codex CLI uses the same Agent Skills open standard (SKILL.md). The Codex version
 ```bash
 mkdir -p ~/.codex/skills/pip
 curl -o ~/.codex/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/codex/pip/SKILL.md
 
 # If you need the /pip command
 mkdir -p ~/.codex/prompts
 curl -o ~/.codex/prompts/pip.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pip.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/commands/pip.md
 ```
 
 Project-level install (current project only):
@@ -238,12 +238,12 @@ Project-level install (current project only):
 ```bash
 mkdir -p .agents/skills/pip
 curl -o .agents/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/codex/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/codex/pip/SKILL.md
 
 # If you need the /pip command
 mkdir -p .agents/prompts
 curl -o .agents/prompts/pip.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/commands/pip.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/commands/pip.md
 ```
 
 ### Cursor
@@ -254,7 +254,7 @@ Cursor uses `.mdc` rule files (Markdown + YAML frontmatter). The PIP rule trigge
 # Project-level install (recommended)
 mkdir -p .cursor/rules
 curl -o .cursor/rules/pip.mdc \
-  https://raw.githubusercontent.com/tanweai/pua/main/cursor/rules/pip.mdc
+  https://raw.githubusercontent.com/mrcoder/pip/main/cursor/rules/pip.mdc
 ```
 
 ### Kiro
@@ -266,7 +266,7 @@ Kiro supports two loading methods: **Steering** (auto semantic trigger) and **Ag
 ```bash
 mkdir -p .kiro/steering
 curl -o .kiro/steering/pip.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/kiro/steering/pip.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/kiro/steering/pip.md
 ```
 
 **Option 2: Agent Skills (same format as Claude Code)**
@@ -274,7 +274,7 @@ curl -o .kiro/steering/pip.md \
 ```bash
 mkdir -p .kiro/skills/pip
 curl -o .kiro/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 ### OpenClaw
@@ -288,7 +288,7 @@ clawhub install pip
 # Or manual install
 mkdir -p ~/.openclaw/skills/pip
 curl -o ~/.openclaw/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -296,7 +296,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p skills/pip
 curl -o skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 ### Google Antigravity
@@ -307,7 +307,7 @@ Antigravity uses the same AgentSkills open standard (SKILL.md). Skills work acro
 # Global install (all projects)
 mkdir -p ~/.gemini/antigravity/skills/pip
 curl -o ~/.gemini/antigravity/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -315,7 +315,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p .agent/skills/pip
 curl -o .agent/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 ### OpenCode
@@ -326,7 +326,7 @@ OpenCode uses the same AgentSkills open standard (SKILL.md). Zero modifications 
 # Global install (all projects)
 mkdir -p ~/.config/opencode/skills/pip
 curl -o ~/.config/opencode/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 Project-level install (current project only):
@@ -334,7 +334,7 @@ Project-level install (current project only):
 ```bash
 mkdir -p .opencode/skills/pip
 curl -o .opencode/skills/pip/SKILL.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/skills/pip/SKILL.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/skills/pip/SKILL.md
 ```
 
 ## Agent Team Usage Guide
@@ -370,7 +370,7 @@ Leader manages global pressure levels and cross-teammate failure transfer.
 ```bash
 mkdir -p .claude/agents
 curl -o .claude/agents/pip-enforcer.md \
-  https://raw.githubusercontent.com/tanweai/pua/main/agents/pip-enforcer-en.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/agents/pip-enforcer-en.md
 ```
 
 Spawn pip-enforcer as an independent watchdog in your Agent Team.
@@ -431,7 +431,7 @@ Based on research into what makes persistently high-agency individuals:
 
 ```bash
 # Via marketplace (same plugin, additional skill)
-claude plugin marketplace add tanweai/pua
+claude plugin marketplace add mrcoder/pip
 claude plugin install pip@pip-skills
 # High-Agency skill is automatically available as "high-agency"
 ```
