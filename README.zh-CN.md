@@ -2,7 +2,7 @@
 
 ### 让你的 Codex / Claude Code 工作效率翻倍，产出翻倍
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
+[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://pip-skill.pages.dev)
 
 **[🇺🇸 English](README.md)** | **🇨🇳 中文** | **[🇯🇵 日本語](README.ja.md)**
 
@@ -27,7 +27,7 @@
 
 ## 在线体验
 
-[https://openpua.ai](https://openpua.ai)
+[https://pip-skill.pages.dev](https://pip-skill.pages.dev)
 
 ## 真实案例：像素级匹配两个渲染器（88.7% → 99.5%）
 
@@ -431,7 +431,7 @@ High-Agency 可独立使用，也可**与 PIP v1 叠加**。叠加时：
 
 上传你的 Claude Code / Codex CLI 对话记录（`.jsonl`），帮助我们改进 PIP Skill 的效果。
 
-**[上传入口 →](https://openpua.ai/#/contribute)**
+**[上传入口 →](https://pip-skill.pages.dev/#/contribute)**
 
 上传的文件将用于 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PIP 策略对 AI 调试行为的影响。
 

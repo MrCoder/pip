@@ -2,7 +2,7 @@
 
 ### Double your Codex / Claude Code productivity and output
 
-[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://openpua.ai)
+[Telegram](https://t.me/+wBWh6h-h1RhiZTI1) · [Discord](https://discord.gg/EcyB3FzJND) · [Twitter/X](https://x.com/xsser_w) · [Landing Page](https://pip-skill.pages.dev)
 
 **[🇨🇳 中文](README.zh-CN.md)** | **[🇯🇵 日本語](README.ja.md)** | **🇺🇸 English**
 
@@ -28,7 +28,7 @@ An AI Coding Agent skill plugin that uses PIP — Performance Improvement Plan (
 
 ## Live Demo
 
-[https://openpua.ai](https://openpua.ai)
+[https://pip-skill.pages.dev](https://pip-skill.pages.dev)
 
 ## Real Case: Pixel-Matching Two Renderers (88.7% → 99.5%)
 
@@ -447,7 +447,7 @@ High-Agency works standalone or **stacked with PIP v1**. When stacked:
 
 Upload your Claude Code / Codex CLI conversation logs (`.jsonl`) to help us improve PIP Skill's effectiveness.
 
-**[Upload here ->](https://openpua.ai/#/contribute)**
+**[Upload here ->](https://pip-skill.pages.dev/#/contribute)**
 
 Uploaded files are used for Benchmark testing and Ablation Study analysis to quantify how different PIP strategies affect AI debugging behavior.
 
