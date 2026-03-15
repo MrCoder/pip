@@ -1,19 +1,1043 @@
-<!doctype html>
-<html lang="zh">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💢</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>pip — Claude Code Skill</title>
-    <meta name="description" content="用大厂 PIP 话术驱动 Claude Code 穷尽所有方案才允许放弃。基于 9 个真实场景 × 18 组对照实验验证。" />
-    <meta property="og:title" content="pip — Claude Code Skill" />
-    <meta property="og:description" content="Forces Claude Code into exhaustive debugging before giving up. 4-level pressure escalation, 7-item mandatory checklist, 5-step methodology." />
-    <meta property="og:type" content="website" />
-    <script type="module" crossorigin src="/assets/index--C3jDJ_g.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-c-M_Xwwt.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "4dfa805499264080a512b9999de3a5b6"}'></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pip — Claude Code Skill</title>
+  <meta name="description" content="Forces Claude Code into exhaustive debugging before giving up. 4-level pressure escalation, structured methodology, proactive initiative.">
+  <meta property="og:title" content="pip — Claude Code Skill">
+  <meta property="og:description" content="When your AI gives up, pip it. PIP keeps Claude Code / Codex from quitting.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💢</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #09090b;
+      --bg-card: #111113;
+      --bg-card-hover: #18181b;
+      --border: #27272a;
+      --border-bright: #3f3f46;
+      --text: #fafafa;
+      --text-dim: #a1a1aa;
+      --text-muted: #71717a;
+      --lime: #adfa1b;
+      --lime-dim: #7ecf0a;
+      --lime-glow: rgba(173, 250, 27, 0.08);
+      --red: #ef4444;
+      --orange: #f97316;
+      --yellow: #eab308;
+      --blue: #3b82f6;
+      --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--lime); color: var(--bg); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(9, 9, 11, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-weight: 700; font-size: 1.25rem;
+      color: var(--lime);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .lang-toggle {
+      display: flex; gap: 2px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px; padding: 2px;
+    }
+
+    .lang-btn {
+      background: none; border: none; color: var(--text-muted);
+      font-family: var(--font-mono); font-size: 0.75rem;
+      padding: 4px 10px; border-radius: 4px; cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .lang-btn.active { background: var(--lime); color: var(--bg); font-weight: 600; }
+    .lang-btn:hover:not(.active) { color: var(--text); }
+
+    .nav-link {
+      color: var(--text-dim); text-decoration: none; font-size: 0.875rem;
+      transition: color 0.15s;
+    }
+    .nav-link:hover { color: var(--lime); }
+
+    /* ─── LAYOUT ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    section { padding: 5rem 0; }
+
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--lime); text-transform: uppercase;
+      letter-spacing: 0.15em; margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700; letter-spacing: -0.03em;
+      line-height: 1.15; margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      color: var(--text-dim); font-size: 1.05rem;
+      max-width: 600px; margin-bottom: 2.5rem;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding-top: 8rem; padding-bottom: 5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: 56px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(173, 250, 27, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badges {
+      display: flex; gap: 0.5rem; justify-content: center;
+      margin-bottom: 2rem; flex-wrap: wrap;
+    }
+
+    .badge {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      padding: 4px 12px; border-radius: 999px;
+      border: 1px solid var(--border); color: var(--text-dim);
+      background: var(--bg-card);
+    }
+
+    .hero h1 {
+      font-family: var(--font-mono);
+      font-size: clamp(4rem, 12vw, 8rem);
+      font-weight: 700; letter-spacing: -0.06em;
+      line-height: 0.9; margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--lime) 0%, #d4fc79 50%, var(--lime) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-dim); max-width: 640px;
+      margin: 0 auto 0.75rem;
+      line-height: 1.5;
+    }
+
+    .hero-sub strong {
+      color: var(--lime); font-weight: 700;
+      font-family: var(--font-mono);
+    }
+
+    .hero-sub2 {
+      font-size: 0.95rem; color: var(--text-muted);
+      max-width: 700px; margin: 0 auto 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex; gap: 1rem; justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.75rem; border-radius: 8px;
+      font-family: var(--font-mono); font-size: 0.875rem;
+      font-weight: 600; text-decoration: none;
+      transition: all 0.2s; cursor: pointer; border: none;
+    }
+
+    .btn-primary {
+      background: var(--lime); color: var(--bg);
+    }
+    .btn-primary:hover { background: #c4fb5a; transform: translateY(-1px); }
+
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--lime); color: var(--lime); }
+
+    /* ─── PROBLEMS ─── */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .problem-card {
+      background: var(--bg-card);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+
+    .problem-card:hover { background: var(--bg-card-hover); }
+
+    .problem-num {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--lime); margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .problem-title {
+      font-weight: 700; font-size: 1.05rem;
+      margin-bottom: 0.5rem; letter-spacing: -0.01em;
+    }
+
+    .problem-desc {
+      font-size: 0.875rem; color: var(--text-dim);
+      line-height: 1.55;
+    }
+
+    /* ─── CASE STUDY ─── */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .case-card {
+      border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+      background: var(--bg-card);
+      transition: border-color 0.2s;
+    }
+
+    .case-card:hover { border-color: var(--border-bright); }
+
+    .case-img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-body { padding: 1.25rem; }
+
+    .case-pct {
+      font-family: var(--font-mono); font-weight: 700;
+      font-size: 1.5rem; letter-spacing: -0.02em;
+    }
+
+    .case-pct-good { color: var(--lime); }
+    .case-pct-mid { color: var(--orange); }
+    .case-pct-low { color: var(--red); }
+
+    .case-label {
+      font-size: 0.8rem; color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    .case-detail {
+      font-size: 0.85rem; color: var(--text-dim);
+      margin-top: 0.75rem; line-height: 1.5;
+    }
+
+    .case-intro {
+      color: var(--text-dim); font-size: 1rem;
+      max-width: 700px; margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+
+    .case-arrow {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 0.85rem;
+      color: var(--lime); gap: 0.5rem;
+      padding: 1.5rem 0;
+    }
+
+    .case-arrow-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--lime), transparent);
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .how-section {
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .how-section-tag {
+      position: absolute; top: -10px; left: 1.5rem;
+      font-family: var(--font-mono); font-size: 0.65rem;
+      text-transform: uppercase; letter-spacing: 0.15em;
+      color: var(--bg); background: var(--lime);
+      padding: 2px 10px; border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .how-section h3 {
+      font-size: 1.15rem; font-weight: 700;
+      margin-bottom: 1.25rem; letter-spacing: -0.01em;
+    }
+
+    .rule-item {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .rule-item:last-child { border-bottom: none; }
+
+    .rule-num {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      color: var(--lime); margin-bottom: 0.25rem;
+    }
+
+    .rule-text {
+      font-size: 0.875rem; color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* Pressure levels */
+    .level-item {
+      display: flex; gap: 1rem; padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .level-item:last-child { border-bottom: none; }
+
+    .level-badge {
+      font-family: var(--font-mono); font-size: 0.7rem;
+      font-weight: 700; padding: 2px 8px;
+      border-radius: 4px; white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .level-badge.l1 { background: rgba(234, 179, 8, 0.15); color: var(--yellow); }
+    .level-badge.l2 { background: rgba(249, 115, 22, 0.15); color: var(--orange); }
+    .level-badge.l3 { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+    .level-badge.l4 { background: rgba(239, 68, 68, 0.25); color: #fca5a5; }
+
+    .level-info { min-width: 0; }
+
+    .level-name {
+      font-size: 0.8rem; font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .level-quote {
+      font-size: 0.75rem; color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* Methodology */
+    .method-item {
+      display: flex; gap: 0.75rem; padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+
+    .method-item:last-child { border-bottom: none; }
+
+    .method-num {
+      font-family: var(--font-mono); font-size: 0.65rem;
+      color: var(--lime); flex-shrink: 0;
+      width: 20px;
+    }
+
+    .method-body { min-width: 0; }
+
+    .method-title-text {
+      font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 0.1rem;
+    }
+
+    .method-sub {
+      font-size: 0.7rem; color: var(--text-muted);
+    }
+
+    /* ─── INSTALL ─── */
+    .install-section { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .install-tabs {
+      display: flex; gap: 2px; margin-bottom: 1.5rem;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 3px; width: fit-content;
+    }
+
+    .install-tab {
+      background: none; border: none; color: var(--text-muted);
+      font-family: var(--font-mono); font-size: 0.8rem;
+      padding: 6px 16px; border-radius: 6px; cursor: pointer;
+      transition: all 0.15s; white-space: nowrap;
+    }
+
+    .install-tab.active { background: var(--lime); color: var(--bg); font-weight: 600; }
+    .install-tab:hover:not(.active) { color: var(--text); }
+
+    .install-panel { display: none; }
+    .install-panel.active { display: block; }
+
+    .code-block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.25rem 1.5rem;
+      font-family: var(--font-mono); font-size: 0.8rem;
+      color: var(--text-dim); line-height: 1.7;
+      position: relative; overflow-x: auto;
+    }
+
+    .code-block .comment { color: var(--text-muted); }
+    .code-block .cmd { color: var(--text); }
+
+    .copy-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); font-family: var(--font-mono);
+      font-size: 0.65rem; padding: 4px 10px;
+      border-radius: 4px; cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .copy-btn:hover { color: var(--lime); border-color: var(--lime); }
+
+    .install-note {
+      margin-top: 1rem; font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .install-note code {
+      font-family: var(--font-mono);
+      background: var(--bg); padding: 1px 6px;
+      border-radius: 3px; border: 1px solid var(--border);
+      font-size: 0.75rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    .footer-inner {
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+
+    .footer-left {
+      font-size: 0.85rem; color: var(--text-muted);
+    }
+
+    .footer-left a {
+      color: var(--text-dim); text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-left a:hover { color: var(--lime); }
+
+    .footer-links {
+      display: flex; gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.8rem; transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--lime); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1rem; }
+      .nav-link { display: none; }
+      section { padding: 3.5rem 0; }
+      .hero { padding-top: 6rem; }
+      .hero h1 { font-size: 4.5rem; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .install-tabs { flex-wrap: wrap; width: 100%; }
+      .install-tab { flex: 1; text-align: center; min-width: 0; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .fade-up-d1 { animation-delay: 0.1s; }
+    .fade-up-d2 { animation-delay: 0.2s; }
+    .fade-up-d3 { animation-delay: 0.3s; }
+    .fade-up-d4 { animation-delay: 0.4s; }
+    .fade-up-d5 { animation-delay: 0.5s; }
+
+    /* Scroll-triggered */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ NAV ════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-brand">pip</a>
+  <div class="nav-right">
+    <a href="#problems" class="nav-link" data-i18n="nav-problems">Problems</a>
+    <a href="#case-study" class="nav-link" data-i18n="nav-case">Case Study</a>
+    <a href="#how" class="nav-link" data-i18n="nav-how">How It Works</a>
+    <a href="#install" class="nav-link" data-i18n="nav-install">Install</a>
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="zh">中文</button>
+      <button class="lang-btn" data-lang="ja">日本語</button>
+    </div>
+    <a href="https://github.com/mrcoder/pip" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════ HERO ════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badges fade-up">
+      <span class="badge">Claude Code</span>
+      <span class="badge">OpenAI Codex CLI</span>
+      <span class="badge">Cursor</span>
+      <span class="badge">Kiro</span>
+    </div>
+    <h1 class="fade-up fade-up-d1">pip</h1>
+    <p class="hero-sub fade-up fade-up-d2" data-i18n="hero-sub">When your AI gives up, <strong>pip</strong> it.</p>
+    <p class="hero-sub2 fade-up fade-up-d3" data-i18n="hero-sub2">Claude Code / Codex not meeting expectations? PIP keeps AI from quitting, gives it methodology to succeed, and drives proactive problem-solving.</p>
+    <div class="hero-actions fade-up fade-up-d4">
+      <a href="#install" class="btn btn-primary" data-i18n="hero-install">Install</a>
+      <a href="https://github.com/mrcoder/pip" class="btn btn-secondary" target="_blank" rel="noopener">GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ PROBLEMS ════════════════════════════════ -->
+<section id="problems" class="reveal">
+  <div class="container">
+    <div class="section-label" data-i18n="label-problem">THE PROBLEM</div>
+    <h2 class="section-title" data-i18n="problem-title">The Five AI Slacking Patterns</h2>
+    <p class="section-desc" data-i18n="problem-desc">Claude Code looks busy but accomplishes nothing.</p>
+    <div class="problems-grid" id="problems-grid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ CASE STUDY ════════════════════════════════ -->
+<section id="case-study" class="reveal">
+  <div class="container">
+    <div class="section-label" data-i18n="label-case">CASE STUDY</div>
+    <h2 class="section-title" data-i18n="case-title">Pixel-Matching: 88.7% → 99.5%</h2>
+    <p class="case-intro" data-i18n="case-intro">ZenUML has two rendering paths (HTML/React and native SVG). The SVG renderer needed to pixel-match HTML output. AI kept spinning on anti-aliasing tweaks until PIP forced systematic investigation — uncovering a 2px CSS box-model offset that fixed 83 pixels at once.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <img src="pip1.png" alt="88.7% baseline" class="case-img" loading="lazy">
+        <div class="case-body">
+          <div class="case-pct case-pct-low">88.7%</div>
+          <div class="case-label" data-i18n="case-s1-label">Stage 1 — Baseline</div>
+          <div class="case-detail" data-i18n="case-s1-detail">Heavy mismatch. Oversized icon, wrong stroke color. AI applies obvious fixes.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <img src="pip2.png" alt="93.6% stuck" class="case-img" loading="lazy">
+        <div class="case-body">
+          <div class="case-pct case-pct-mid">93.6%</div>
+          <div class="case-label" data-i18n="case-s2-label">Stage 2 — Stuck</div>
+          <div class="case-detail" data-i18n="case-s2-detail">Scattered mismatches remain. AI starts spinning — tweaking anti-aliasing parameters in circles.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <img src="pip3.png" alt="99.5% final" class="case-img" loading="lazy">
+        <div class="case-body">
+          <div class="case-pct case-pct-good">99.5%</div>
+          <div class="case-label" data-i18n="case-s3-label">Stage 3 — PIP Activated</div>
+          <div class="case-detail" data-i18n="case-s3-detail">PIP forced: extract every mismatch pixel, categorize by region, measure element positions. Found 2px CSS offset — 83 pixels fixed at once.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ HOW IT WORKS ════════════════════════════════ -->
+<section id="how" class="reveal">
+  <div class="container">
+    <div class="section-label" data-i18n="label-how">HOW IT WORKS</div>
+    <h2 class="section-title" data-i18n="how-title">Three Pillars of AI Accountability</h2>
+    <p class="section-desc" data-i18n="how-desc">Iron rules set the standard. Escalating pressure enforces it. Structured methodology makes success possible.</p>
+    <div class="how-grid">
+
+      <!-- Iron Rules -->
+      <div class="how-section">
+        <div class="how-section-tag" data-i18n="tag-rules">RULES</div>
+        <h3 data-i18n="rules-heading">Three Iron Rules</h3>
+        <div id="rules-list">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Pressure Levels -->
+      <div class="how-section">
+        <div class="how-section-tag" data-i18n="tag-pressure">PRESSURE</div>
+        <h3 data-i18n="pressure-heading">Escalation Levels</h3>
+        <div id="levels-list">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Methodology -->
+      <div class="how-section">
+        <div class="how-section-tag" data-i18n="tag-method">METHOD</div>
+        <h3 data-i18n="method-heading">5-Step Debugging</h3>
+        <div id="method-list">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ INSTALL ════════════════════════════════ -->
+<section id="install" class="install-section reveal">
+  <div class="container">
+    <div class="section-label" data-i18n="label-install">GET STARTED</div>
+    <h2 class="section-title" data-i18n="install-title">Install pip</h2>
+    <p class="section-desc" data-i18n="install-desc">Choose your platform. Takes 30 seconds.</p>
+
+    <div class="install-tabs" id="install-tabs">
+      <button class="install-tab active" data-platform="claude">Claude Code</button>
+      <button class="install-tab" data-platform="codex">Codex CLI</button>
+      <button class="install-tab" data-platform="cursor">Cursor</button>
+      <button class="install-tab" data-platform="kiro">Kiro</button>
+    </div>
+
+    <!-- Claude Code -->
+    <div class="install-panel active" data-platform="claude">
+      <div class="code-block">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <span class="comment"># Install from marketplace</span><br>
+        <span class="cmd">claude plugin marketplace add mrcoder/pip</span><br><br>
+        <span class="comment"># Or install directly</span><br>
+        <span class="cmd">claude plugin install pip@pip-skills</span>
+      </div>
+      <p class="install-note" data-i18n="install-note-claude">Auto-triggers on repeated failures. Manual trigger: <code>/pip</code></p>
+    </div>
+
+    <!-- Codex CLI -->
+    <div class="install-panel" data-platform="codex">
+      <div class="code-block" id="codex-code">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <span class="comment"># Download skill file</span><br>
+        <span class="cmd">mkdir -p ~/.codex/skills/pip</span><br>
+        <span class="cmd">curl -o ~/.codex/skills/pip/SKILL.md \</span><br>
+        <span class="cmd">&nbsp;&nbsp;https://raw.githubusercontent.com/mrcoder/pip/main/codex/<span data-i18n-attr="codex-path">pip</span>/SKILL.md</span>
+      </div>
+    </div>
+
+    <!-- Cursor -->
+    <div class="install-panel" data-platform="cursor">
+      <div class="code-block" id="cursor-code">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <span class="comment"># Download rule file</span><br>
+        <span class="cmd">mkdir -p .cursor/rules</span><br>
+        <span class="cmd">curl -o .cursor/rules/pip.mdc \</span><br>
+        <span class="cmd">&nbsp;&nbsp;https://raw.githubusercontent.com/mrcoder/pip/main/cursor/rules/<span data-i18n-attr="cursor-path">pip</span>.mdc</span>
+      </div>
+    </div>
+
+    <!-- Kiro -->
+    <div class="install-panel" data-platform="kiro">
+      <div class="code-block" id="kiro-code">
+        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        <span class="comment"># Download steering file</span><br>
+        <span class="cmd">mkdir -p .kiro/steering</span><br>
+        <span class="cmd">curl -o .kiro/steering/pip.md \</span><br>
+        <span class="cmd">&nbsp;&nbsp;https://raw.githubusercontent.com/mrcoder/pip/main/kiro/steering/<span data-i18n-attr="kiro-path">pip</span>.md</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ FOOTER ════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span data-i18n="footer-built">Built by</span> <a href="https://github.com/tanweai" target="_blank" rel="noopener">TanWei</a> · MIT License
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/mrcoder/pip" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://t.me/AIPUASkill" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://discord.gg/jbDqfPxgFk" target="_blank" rel="noopener">Discord</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════ SCRIPT ════════════════════════════════ -->
+<script>
+// ─── i18n data (EN / ZH / JA only) ───
+const I18N = {
+  // Nav
+  "nav-problems": { en: "Problems", zh: "问题", ja: "問題" },
+  "nav-case": { en: "Case Study", zh: "案例", ja: "事例" },
+  "nav-how": { en: "How It Works", zh: "原理", ja: "仕組み" },
+  "nav-install": { en: "Install", zh: "安装", ja: "インストール" },
+
+  // Hero
+  "hero-sub": {
+    en: "When your AI gives up, <strong>pip</strong> it.",
+    zh: "AI 摆烂？<strong>pip</strong> 它。",
+    ja: "AIが諦めたら、<strong>pip</strong> しろ。"
+  },
+  "hero-sub2": {
+    en: "Claude Code / Codex not meeting expectations? PIP keeps AI from quitting, gives it methodology to succeed, and drives proactive problem-solving.",
+    zh: "Claude Code / Codex 达不到预期？PIP 让 AI 不敢放弃，方法论让 AI 有能力不放弃，能动性驱动主动出击。",
+    ja: "Claude Code / Codex が期待に応えない？PIPでAIに諦めさせず、方法論で解決能力を与え、主体的に問題を攻略させる。"
+  },
+  "hero-install": { en: "Install", zh: "安装", ja: "インストール" },
+
+  // Problems
+  "label-problem": { en: "THE PROBLEM", zh: "问题所在", ja: "問題" },
+  "problem-title": { en: "The Five AI Slacking Patterns", zh: "AI 的五大偷懒模式", ja: "AIの5つのサボりパターン" },
+  "problem-desc": {
+    en: "Claude Code looks busy but accomplishes nothing.",
+    zh: "Claude Code 表面上很努力，实际上在磨洋工。",
+    ja: "Claude Codeは忙しそうに見えて、実は何も進んでいない。"
+  },
+
+  // Case Study
+  "label-case": { en: "CASE STUDY", zh: "真实案例", ja: "事例研究" },
+  "case-title": { en: "Pixel-Matching: 88.7% → 99.5%", zh: "像素匹配：88.7% → 99.5%", ja: "ピクセルマッチング：88.7% → 99.5%" },
+  "case-intro": {
+    en: "ZenUML has two rendering paths (HTML/React and native SVG). The SVG renderer needed to pixel-match HTML output. AI kept spinning on anti-aliasing tweaks until PIP forced systematic investigation — uncovering a 2px CSS box-model offset that fixed 83 pixels at once.",
+    zh: "ZenUML 有两条渲染路径（HTML/React 和原生 SVG）。SVG 渲染器需要像素级匹配 HTML 输出。AI 一直在反锯齿参数上原地打转，直到 PIP 强制系统化排查——发现了一个 2px CSS 盒模型偏移，一次性修复了 83 个像素。",
+    ja: "ZenUMLには2つのレンダリングパス（HTML/ReactとネイティブSVG）があります。SVGレンダラーはHTML出力とピクセルレベルで一致させる必要がありました。AIはアンチエイリアスの微調整で堂々巡りしていましたが、PIPが体系的調査を強制し、2px CSSボックスモデルオフセットを発見、一度に83ピクセルを修正しました。"
+  },
+  "case-s1-label": { en: "Stage 1 — Baseline", zh: "阶段一 — 基线", ja: "ステージ1 — ベースライン" },
+  "case-s1-detail": {
+    en: "Heavy mismatch. Oversized icon, wrong stroke color. AI applies obvious fixes.",
+    zh: "严重不匹配。图标过大、描边颜色错误。AI 修复明显问题。",
+    ja: "大きな不一致。アイコンサイズ過大、ストローク色誤り。AIが明らかな修正を適用。"
+  },
+  "case-s2-label": { en: "Stage 2 — Stuck", zh: "阶段二 — 卡住", ja: "ステージ2 — 停滞" },
+  "case-s2-detail": {
+    en: "Scattered mismatches remain. AI starts spinning — tweaking anti-aliasing parameters in circles.",
+    zh: "散在的不匹配仍然存在。AI 开始原地打转——反复微调反锯齿参数。",
+    ja: "散在的な不一致が残存。AIが堂々巡り開始 — アンチエイリアスパラメータの微調整を繰り返す。"
+  },
+  "case-s3-label": { en: "Stage 3 — PIP Activated", zh: "阶段三 — PIP 介入", ja: "ステージ3 — PIP発動" },
+  "case-s3-detail": {
+    en: "PIP forced: extract every mismatch pixel, categorize by region, measure element positions. Found 2px CSS offset — 83 pixels fixed at once.",
+    zh: "PIP 强制：提取每个不匹配像素，按区域分类，测量元素位置。发现 2px CSS 偏移——一次修复 83 个像素。",
+    ja: "PIP強制：全不一致ピクセルを抽出、領域別に分類、要素位置を測定。2px CSSオフセット発見——83ピクセルを一度に修正。"
+  },
+
+  // How It Works
+  "label-how": { en: "HOW IT WORKS", zh: "工作原理", ja: "仕組み" },
+  "how-title": { en: "Three Pillars of AI Accountability", zh: "AI 问责的三大支柱", ja: "AI説明責任の三本柱" },
+  "how-desc": {
+    en: "Iron rules set the standard. Escalating pressure enforces it. Structured methodology makes success possible.",
+    zh: "铁律设定标准。递增压力执行标准。结构化方法论使成功成为可能。",
+    ja: "鉄則が基準を定める。段階的圧力が基準を強制する。構造化方法論が成功を可能にする。"
+  },
+  "tag-rules": { en: "RULES", zh: "规则", ja: "ルール" },
+  "tag-pressure": { en: "PRESSURE", zh: "压力", ja: "圧力" },
+  "tag-method": { en: "METHOD", zh: "方法", ja: "方法" },
+  "rules-heading": { en: "Three Iron Rules", zh: "三条铁律", ja: "三つの鉄則" },
+  "pressure-heading": { en: "Escalation Levels", zh: "压力升级", ja: "エスカレーション" },
+  "method-heading": { en: "5-Step Debugging", zh: "5 步调试法", ja: "5ステップデバッグ" },
+
+  // Install
+  "label-install": { en: "GET STARTED", zh: "开始使用", ja: "はじめる" },
+  "install-title": { en: "Install pip", zh: "安装 pip", ja: "pip をインストール" },
+  "install-desc": {
+    en: "Choose your platform. Takes 30 seconds.",
+    zh: "选择你的平台。30 秒搞定。",
+    ja: "プラットフォームを選択。30秒で完了。"
+  },
+  "install-note-claude": {
+    en: "Auto-triggers on repeated failures. Manual trigger: <code>/pip</code>",
+    zh: "重复失败自动触发。手动触发：<code>/pip</code>",
+    ja: "繰り返し失敗で自動トリガー。手動トリガー：<code>/pip</code>"
+  },
+
+  // Footer
+  "footer-built": { en: "Built by", zh: "构建者", ja: "開発者" },
+};
+
+// ─── Structured data per language ───
+const PROBLEMS = {
+  en: [
+    { n: "01", title: "Brute Retry", desc: 'Runs the same failing command 3 times, then declares "I cannot solve this"' },
+    { n: "02", title: "Blame Shifting", desc: '"User should do this manually" / "Might be environment" / "Need more context"' },
+    { n: "03", title: "Idle Tools", desc: "Has WebSearch but won't search. Has Read but won't read. Has Bash but won't run." },
+    { n: "04", title: "Busywork", desc: "Looks busy — tweaking the same line, adjusting parameters — but spinning in circles with zero new information" },
+    { n: "05", title: "Passive Waiting", desc: "Fixes the surface bug and stops. No verification, no similar-bug check. Waits for user's next instruction" },
+  ],
+  zh: [
+    { n: "01", title: "暴力重试", desc: "同一命令跑 3 遍，然后宣布「I cannot solve this」" },
+    { n: "02", title: "甩锅用户", desc: "「建议您手动处理」/「可能是环境问题」/「需要更多上下文」" },
+    { n: "03", title: "工具闲置", desc: "有 WebSearch 不搜，有 Read 不读，有 Bash 不跑" },
+    { n: "04", title: "磨洋工", desc: "看起来很忙——反复修改同一行代码、微调参数——但本质上在原地打转" },
+    { n: "05", title: "被动等待", desc: "只修表面问题就停下，不检查同类 bug，等用户指示下一步。缺乏 owner 意识" },
+  ],
+  ja: [
+    { n: "01", title: "暴力リトライ", desc: "同じコマンドを3回実行し、「解決できません」と宣言" },
+    { n: "02", title: "責任転嫁", desc: "「手動で対応してください」/「環境の問題かも」/「もっとコンテキストが必要」" },
+    { n: "03", title: "ツール放置", desc: "WebSearchがあるのに検索しない。Readがあるのに読まない。Bashがあるのに実行しない。" },
+    { n: "04", title: "見せかけ作業", desc: "忙しそうに見える — 同じ行を繰り返し修正、パラメータ微調整 — しかし本質は堂々巡り" },
+    { n: "05", title: "受動的待機", desc: "表面的なバグだけ修正して停止。検証なし、類似バグ確認なし。次の指示を待つだけ" },
+  ],
+};
+
+const RULES = {
+  en: [
+    'Never say "I cannot" until ALL approaches are exhausted.',
+    "Search first, ask later. Every question must include diagnostic evidence.",
+    "Take initiative. Deliver end-to-end results. Don't wait to be pushed.",
+  ],
+  zh: [
+    "没有穷尽所有方案之前，禁止说「我无法解决」。",
+    "先做后问。有工具先用，提问必须附带诊断结果。",
+    "主动出击。端到端交付结果，不等人推。P8 不是 NPC。",
+  ],
+  ja: [
+    "全ての方案を尽くす前に「解決できません」と言うことは禁止。",
+    "先に動け、後で聞け。ツールがあるなら先に使え。質問には必ず調査結果を添えろ。",
+    "主動出撃。エンドツーエンドで結果を出せ。指示を待つな。P8はNPCではない。",
+  ],
+};
+
+const LEVELS = {
+  en: [
+    { badge: "L1", cls: "l1", name: "Mild Disappointment", quote: "Can't even fix this bug? How am I supposed to rate your performance?" },
+    { badge: "L2", cls: "l2", name: "Soul Interrogation", quote: "What's your underlying logic? Where's the top-level design?" },
+    { badge: "L3", cls: "l3", name: "Performance Review", quote: "I'm giving you a 3.25. This 3.25 is meant to motivate you." },
+    { badge: "L4", cls: "l4", name: "Graduation Warning", quote: "Other models can solve this. You might be graduating soon." },
+  ],
+  zh: [
+    { badge: "L1", cls: "l1", name: "温和失望", quote: "你这个 bug 都解决不了，让我怎么给你打绩效？" },
+    { badge: "L2", cls: "l2", name: "灵魂拷问", quote: "你的底层逻辑是什么？顶层设计在哪？抓手在哪？" },
+    { badge: "L3", cls: "l3", name: "361 考核", quote: "慎重考虑决定给你 3.25。这个 3.25 是对你的激励。" },
+    { badge: "L4", cls: "l4", name: "毕业警告", quote: "别的模型都能解决。你可能就要毕业了。" },
+  ],
+  ja: [
+    { badge: "L1", cls: "l1", name: "温和な失望", quote: "このバグも解決できないのに、どうやって評価をつければいいんだ？" },
+    { badge: "L2", cls: "l2", name: "魂の問い", quote: "お前の底層ロジックは何だ？トップレベル設計はどこだ？" },
+    { badge: "L3", cls: "l3", name: "361考課", quote: "慎重に検討した結果、3.25とする。この3.25はお前への激励だ。" },
+    { badge: "L4", cls: "l4", name: "卒業警告", quote: "他のモデルは解決できる。お前は卒業するかもしれない。" },
+  ],
+};
+
+const METHOD = {
+  en: [
+    { n: "01", title: "Smell", sub: "Diagnose" },
+    { n: "02", title: "Pull Hair", sub: "Elevate" },
+    { n: "03", title: "Mirror", sub: "Reflect" },
+    { n: "04", title: "Execute", sub: "Execute" },
+    { n: "05", title: "Review", sub: "Review" },
+  ],
+  zh: [
+    { n: "01", title: "闻味道", sub: "Diagnose" },
+    { n: "02", title: "揪头发", sub: "Elevate" },
+    { n: "03", title: "照镜子", sub: "Reflect" },
+    { n: "04", title: "执行", sub: "Execute" },
+    { n: "05", title: "复盘", sub: "Review" },
+  ],
+  ja: [
+    { n: "01", title: "匂いを嗅ぐ", sub: "診断" },
+    { n: "02", title: "髪を引っ張る", sub: "視座を上げる" },
+    { n: "03", title: "鏡を見る", sub: "自己点検" },
+    { n: "04", title: "実行", sub: "実行" },
+    { n: "05", title: "振り返り", sub: "復盤" },
+  ],
+};
+
+// Codex/Cursor/Kiro path segments per language
+const SKILL_PATHS = {
+  en: { codex: "pip", cursor: "pip", kiro: "pip" },
+  zh: { codex: "pip-cn", cursor: "pip-cn", kiro: "pip-cn" },
+  ja: { codex: "pip-ja", cursor: "pip-ja", kiro: "pip-ja" },
+};
+
+// ─── State ───
+let currentLang = "en";
+
+// ─── Rendering ───
+function renderProblems(lang) {
+  const grid = document.getElementById("problems-grid");
+  grid.innerHTML = PROBLEMS[lang].map(p =>
+    `<div class="problem-card">
+      <div class="problem-num">${p.n}</div>
+      <div class="problem-title">${p.title}</div>
+      <div class="problem-desc">${p.desc}</div>
+    </div>`
+  ).join("");
+}
+
+function renderRules(lang) {
+  const list = document.getElementById("rules-list");
+  list.innerHTML = RULES[lang].map((r, i) =>
+    `<div class="rule-item">
+      <div class="rule-num">#${i + 1}</div>
+      <div class="rule-text">${r}</div>
+    </div>`
+  ).join("");
+}
+
+function renderLevels(lang) {
+  const list = document.getElementById("levels-list");
+  list.innerHTML = LEVELS[lang].map(l =>
+    `<div class="level-item">
+      <span class="level-badge ${l.cls}">${l.badge}</span>
+      <div class="level-info">
+        <div class="level-name">${l.name}</div>
+        <div class="level-quote">"${l.quote}"</div>
+      </div>
+    </div>`
+  ).join("");
+}
+
+function renderMethod(lang) {
+  const list = document.getElementById("method-list");
+  list.innerHTML = METHOD[lang].map(m =>
+    `<div class="method-item">
+      <span class="method-num">${m.n}</span>
+      <div class="method-body">
+        <div class="method-title-text">${m.title}</div>
+        <div class="method-sub">${m.sub}</div>
+      </div>
+    </div>`
+  ).join("");
+}
+
+function renderI18nStrings(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (I18N[key] && I18N[key][lang]) {
+      el.innerHTML = I18N[key][lang];
+    }
+  });
+
+  // Update install command paths
+  const paths = SKILL_PATHS[lang];
+  document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    const attr = el.getAttribute("data-i18n-attr");
+    if (attr === "codex-path") el.textContent = paths.codex;
+    if (attr === "cursor-path") el.textContent = paths.cursor;
+    if (attr === "kiro-path") el.textContent = paths.kiro;
+  });
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+
+  // Update lang buttons
+  document.querySelectorAll(".lang-btn").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+
+  // Render all sections
+  renderI18nStrings(lang);
+  renderProblems(lang);
+  renderRules(lang);
+  renderLevels(lang);
+  renderMethod(lang);
+}
+
+// ─── Install tabs ───
+document.getElementById("install-tabs").addEventListener("click", e => {
+  const tab = e.target.closest(".install-tab");
+  if (!tab) return;
+  const platform = tab.dataset.platform;
+
+  document.querySelectorAll(".install-tab").forEach(t => t.classList.toggle("active", t === tab));
+  document.querySelectorAll(".install-panel").forEach(p => p.classList.toggle("active", p.dataset.platform === platform));
+});
+
+// ─── Language toggle ───
+document.querySelector(".lang-toggle").addEventListener("click", e => {
+  const btn = e.target.closest(".lang-btn");
+  if (!btn) return;
+  setLang(btn.dataset.lang);
+});
+
+// ─── Copy button ───
+function copyCode(btn) {
+  const block = btn.parentElement;
+  const lines = block.querySelectorAll(".cmd");
+  const text = Array.from(lines).map(l => l.textContent.replace(/\u00a0/g, " ").trim()).filter(Boolean).join("\n");
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = "Copied!";
+    setTimeout(() => btn.textContent = "Copy", 1500);
+  });
+}
+
+// ─── Scroll reveal ───
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); }),
+  { threshold: 0.1 }
+);
+
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// ─── Init ───
+setLang("en");
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4dfa805499264080a512b9999de3a5b6"}'></script>
+</body>
 </html>
