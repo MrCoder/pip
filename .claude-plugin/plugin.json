@@ -1,7 +1,7 @@
 {
     "name": "pip",
     "version": "1.2.0",
-    "description": "PIP Motivator -- forces AI to exhaust all solutions before giving up. Chinese version: corporate PIP rhetoric (Alibaba, ByteDance, Huawei, Tencent). English 'PIP Edition': Performance Improvement Plan (Amazon, Google, Meta, Netflix, Stripe). Same engine, two cultural faces. All task types: code, research, writing, deployment, infra.",
+    "description": "PIP Motivator -- forces AI to exhaust all solutions before giving up. English default: Performance Improvement Plan (Amazon, Google, Meta, Netflix, Stripe). Chinese version (pip-cn): corporate PIP rhetoric (Alibaba, ByteDance, Huawei, Tencent). Same engine, two cultural faces. All task types: code, research, writing, deployment, infra.",
     "author": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"

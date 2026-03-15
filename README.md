@@ -20,7 +20,7 @@
 
 > Most people think this project is a joke. That's the biggest misconception. It genuinely doubles your Codex / Claude Code productivity and output.
 
-An AI Coding Agent skill plugin that uses corporate PIP rhetoric (Chinese version) / PIP — Performance Improvement Plan (English version) from Chinese & Western tech giants to force AI to exhaust every possible solution before giving up. Supports **Claude Code**, **OpenAI Codex CLI**, **Cursor**, **Kiro**, **OpenClaw**, **Google Antigravity**, and **OpenCode**. Three capabilities:
+An AI Coding Agent skill plugin that uses PIP — Performance Improvement Plan (English default) / corporate PIP rhetoric (Chinese version) from Western & Chinese tech giants to force AI to exhaust every possible solution before giving up. Supports **Claude Code**, **OpenAI Codex CLI**, **Cursor**, **Kiro**, **OpenClaw**, **Google Antigravity**, and **OpenCode**. Three capabilities:
 
 1. **PIP Rhetoric** — Makes AI afraid to give up
 2. **Debugging Methodology** — Gives AI the ability not to give up
@@ -185,11 +185,11 @@ PIP Skill provides fully translated versions — each language has independent, 
 
 | Language | Claude Code | Codex CLI | Cursor | Kiro | OpenClaw | Antigravity | OpenCode |
 |----------|------------|-----------|--------|------|----------|-------------|----------|
-| 🇨🇳 Chinese (default) | `pip` | `pip` | `pip.mdc` | `pip.md` | `pip` | `pip` | `pip` |
-| 🇺🇸 English (PIP Edition) | `pip-en` | `pip-en` | `pip-en.mdc` | `pip-en.md` | `pip-en` | `pip-en` | `pip-en` |
+| 🇺🇸 English (default) | `pip` | `pip` | `pip.mdc` | `pip.md` | `pip` | `pip` | `pip` |
+| 🇨🇳 Chinese | `pip-cn` | `pip-cn` | `pip-cn.mdc` | `pip-cn.md` | `pip-cn` | `pip-cn` | `pip-cn` |
 | 🇯🇵 Japanese | `pip-ja` | `pip-ja` | `pip-ja.mdc` | `pip-ja.md` | `pip-ja` | `pip-ja` | `pip-ja` |
 
-> **🇺🇸 English "PIP Edition"**: *"This is a difficult conversation. When we leveled you at Staff, I went to bat for you in calibration. The expectation was that you'd operate at that level from day one. That hasn't happened."* — The English version uses **PIP (Performance Improvement Plan)** rhetoric from Western big-tech. Every sentence is a real phrase from actual PIP conversations. Chinese version uses Alibaba 361, ByteDance, Huawei wolf culture. English version uses Amazon Leadership Principles, Google perf calibration, Meta PSC, Netflix Keeper Test, Stripe Craft. Same repo, same engine, two cultural faces.
+> **🇺🇸 English (default)**: *"This is a difficult conversation. When we leveled you at Staff, I went to bat for you in calibration. The expectation was that you'd operate at that level from day one. That hasn't happened."* — The default English version uses **PIP (Performance Improvement Plan)** rhetoric from Western big-tech. Every sentence is a real phrase from actual PIP conversations. The Chinese version (`pip-cn`) uses Alibaba 361, ByteDance, Huawei wolf culture. English uses Amazon Leadership Principles, Google perf calibration, Meta PSC, Netflix Keeper Test, Stripe Craft. Same repo, same engine, two cultural faces.
 
 Choose the file with the corresponding language suffix when installing. See platform-specific instructions below.
 
@@ -358,7 +358,7 @@ Leader manages global pressure levels and cross-teammate failure transfer.
 ```bash
 mkdir -p .claude/agents
 curl -o .claude/agents/pip-enforcer.md \
-  https://raw.githubusercontent.com/mrcoder/pip/main/agents/pip-enforcer-en.md
+  https://raw.githubusercontent.com/mrcoder/pip/main/agents/pip-enforcer.md
 ```
 
 Spawn pip-enforcer as an independent watchdog in your Agent Team.
