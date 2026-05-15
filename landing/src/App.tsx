@@ -16,6 +16,7 @@ import {
   NumberTicker,
 } from "./components/motion-primitives"
 import Contribute from "./pages/Contribute"
+import AdminStats from "./pages/AdminStats"
 import {
   type Lang,
   LANG_LABELS,
@@ -232,7 +233,7 @@ function MobileExcuseCards({ L }: { L: (value: Record<Lang, string>) => string }
 
 /* ── Install Tabs ── */
 function InstallTabs({ L }: { L: (value: Record<Lang, string>) => string }) {
-  const [tab, setTab] = useState<"claude" | "codex" | "cursor" | "kiro" | "project">("claude")
+  const [tab, setTab] = useState<"claude" | "codex" | "hermes" | "kimi" | "cursor" | "kiro" | "project">("claude")
 
   const content = {
     claude: {
@@ -242,6 +243,14 @@ function InstallTabs({ L }: { L: (value: Record<Lang, string>) => string }) {
     codex: {
       desc: L(inline.codexDesc),
       code: "mkdir -p ~/.codex/skills/pip\ncurl -o ~/.codex/skills/pip/SKILL.md \\\n  https://raw.githubusercontent.com/mrcoder/pip/main/codex/pip/SKILL.md",
+    },
+    hermes: {
+      desc: L(inline.hermesDesc),
+      code: "mkdir -p ~/.hermes/skills/pua\ncurl -o ~/.hermes/skills/pua/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/hermes/pua/SKILL.md",
+    },
+    kimi: {
+      desc: L(inline.kimiCodeDesc),
+      code: "mkdir -p ~/.kimi/skills/pua\ncurl -o ~/.kimi/skills/pua/SKILL.md \\\n  https://raw.githubusercontent.com/tanweai/pua/main/kimi/pua/SKILL.md",
     },
     cursor: {
       desc: L(inline.cursorDesc),
@@ -260,6 +269,8 @@ function InstallTabs({ L }: { L: (value: Record<Lang, string>) => string }) {
   const installTabs = [
     { id: "claude", label: "Claude Code" },
     { id: "codex", label: "Codex CLI" },
+    { id: "hermes", label: "Hermes Agent" },
+    { id: "kimi", label: "Kimi Code" },
     { id: "cursor", label: "Cursor" },
     { id: "kiro", label: "Kiro" },
     { id: "project", label: L(inline.projectLevel) },
@@ -288,18 +299,22 @@ function InstallTabs({ L }: { L: (value: Record<Lang, string>) => string }) {
 }
 
 /* ── App ── */
-function useHashRoute() {
-  const [hash, setHash] = useState(window.location.hash)
+function useClientRoute() {
+  const [route, setRoute] = useState(() => ({ hash: window.location.hash, pathname: window.location.pathname }))
   useEffect(() => {
-    const onHash = () => setHash(window.location.hash)
-    window.addEventListener("hashchange", onHash)
-    return () => window.removeEventListener("hashchange", onHash)
+    const update = () => setRoute({ hash: window.location.hash, pathname: window.location.pathname })
+    window.addEventListener("hashchange", update)
+    window.addEventListener("popstate", update)
+    return () => {
+      window.removeEventListener("hashchange", update)
+      window.removeEventListener("popstate", update)
+    }
   }, [])
-  return hash
+  return route
 }
 
 export default function App() {
-  const hash = useHashRoute()
+  const { hash, pathname } = useClientRoute()
   const [lang, setLang] = useState<Lang>("en")
   const [activeTab, setActiveTab] = useState("Alibaba")
   const [navScrolled, setNavScrolled] = useState(false)
@@ -310,8 +325,11 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
-  if (hash === "#/contribute") {
+  if (hash === "#/contribute" || pathname === "/contribute.html" || pathname === "/contribute") {
     return <Contribute lang={lang} />
+  }
+  if (hash === "#/admin/heartbeats") {
+    return <AdminStats lang={lang} />
   }
   const L = (o: Record<Lang, string>) => o[lang]
   const activeBenchmark = BENCHMARKS.find((benchmark) => benchmark.name === activeTab) ?? BENCHMARKS[0]
@@ -436,7 +454,7 @@ export default function App() {
             </motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.6 }}>
               <div style={{ display: "flex", gap: "0.625rem", marginTop: "1.5rem", flexWrap: "wrap" }}>
-                {["Claude Code", "OpenAI Codex CLI", "Cursor", "Kiro"].map((name) => (
+                {["Claude Code", "OpenAI Codex CLI", "Hermes Agent", "Kimi Code", "Cursor", "Kiro", "CodeBuddy", "OpenClaw", "Google Antigravity", "OpenCode", "VSCode Copilot"].map((name) => (
                   <div key={name} className="platform-pill">{name}</div>
                 ))}
               </div>

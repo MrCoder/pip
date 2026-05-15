@@ -1,7 +1,7 @@
 {
     "name": "pip",
-    "version": "1.2.0",
-    "description": "PIP Motivator -- forces AI to exhaust all solutions before giving up. English default: Performance Improvement Plan (Amazon, Google, Meta, Netflix, Stripe). Chinese version (pip-cn): corporate PIP rhetoric (Alibaba, ByteDance, Huawei, Tencent). Same engine, two cultural faces. All task types: code, research, writing, deployment, infra.",
+    "version": "3.4.6",
+    "description": "Forces high-agency exhaustive problem-solving with corporate PIP pressure. Triggers on explicit PIP requests, user frustration, repeated failures, passive behavior, unverified completion, or quality complaints. v3.4.6 removes permissionDecision=ask prompts from integrity guard; true solution contamination still denies. Not for normal first-attempt requests.",
     "author": {
         "name": "探微安全实验室",
         "url": "https://github.com/tanweai"
@@ -15,8 +15,23 @@
         "never-give-up",
         "alibaba",
         "corporate-culture",
-        "never-give-up",
         "agent-team",
-        "performance-improvement-plan"
+        "p7-p8-p9-p10",
+        "self-evolution",
+        "performance-improvement-plan",
+        "leaderboard",
+        "owner-consciousness",
+        "methodology",
+        "mama-mode",
+        "chinese-mom",
+        "heartbeat",
+        "cloudflare",
+        "active-users",
+        "upload",
+        "contribute",
+        "jsonl",
+        "anonymous-upload",
+        "direct-upload",
+        "rate-limit"
     ]
 }

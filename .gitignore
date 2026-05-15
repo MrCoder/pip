@@ -3,5 +3,4 @@ dist/
 .DS_Store
 .idea/
 docs/.local
-landing/
-pua-workspace/
+pua-workspace/CLAUDE.md

@@ -7,6 +7,7 @@ interface Props {
   lang: Lang
 }
 
+
 export default function Contribute({ lang }: Props) {
   const L = (zh: string, en: string, ja?: string) => (lang === "zh" ? zh : lang === "ja" ? (ja ?? en) : en) // other langs fallback to en
   const [user, setUser] = useState<User | null>(null)
@@ -50,19 +51,21 @@ export default function Contribute({ lang }: Props) {
         setUploadResult({ ok: false, message: L("文件过大（最大 50MB）", "File too large (max 50MB)") })
         return
       }
-      if (!wechatId.trim()) {
-        setUploadResult({ ok: false, message: L("请先填写微信号", "Please enter your WeChat ID first") })
-        return
-      }
-
       setUploading(true)
       setUploadResult(null)
-      const form = new FormData()
-      form.append("file", file)
-      form.append("wechat_id", wechatId.trim())
-
       try {
-        const res = await fetch("/api/upload", { method: "POST", body: form, credentials: "include" })
+        const fileText = await file.text()
+        const res = await fetch("/api/upload", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/jsonl; charset=utf-8",
+            "X-PUA-File-Name": encodeURIComponent(file.name),
+            "X-PUA-Wechat-Id": encodeURIComponent(wechatId.trim() || "not-provided"),
+            "X-PUA-Upload-Consent": "explicit",
+          },
+          credentials: "include",
+          body: fileText,
+        })
         const data = await res.json()
         if (data.ok) {
           setUploadResult({ ok: true, message: L(`${file.name} 上传成功`, `${file.name} uploaded successfully`) })
@@ -176,20 +179,20 @@ export default function Contribute({ lang }: Props) {
           <strong>{L("数据使用声明", "Data Usage Notice")}</strong>
           <br />
           {L(
-            "上传的 .jsonl 文件将用于 PIP Skill 的 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PIP 策略对 AI 调试行为的影响。上传即表示您同意将文件用于上述研究目的。我们不会公开您的原始文件内容。",
-            "Uploaded .jsonl files will be used for PIP Skill benchmark testing and ablation study analysis, helping quantify how different PIP strategies affect AI debugging behavior. By uploading, you agree to this research use. We will not publicly share your raw file contents."
+            "上传的 .jsonl 文件将用于 PIP Skill 的 Benchmark 测试和消融实验（Ablation Study）分析，帮助量化不同 PIP 策略对 AI 调试行为的影响。上传即表示您同意将文件用于上述研究目的。我们不会公开您的原始文件内容。不登录也可以匿名上传；若已登录或填写微信号，相关标识会和文件元数据一起记录，项目管理员会收到上传通知（含文件名、文件大小及上述账号信息）。",
+            "Uploaded .jsonl files will be used for PIP Skill benchmark testing and ablation study analysis, helping quantify how different PIP strategies affect AI debugging behavior. By uploading, you agree to this research use. We will not publicly share your raw file contents. You can upload anonymously without login; if you log in or provide a WeChat ID, those identifiers are stored with file metadata and included in the admin notification."
           )}
         </div>
 
-        {!user ? (
-          /* Login Card */
+        {!user && (
+          /* Optional Login Card */
           <div
             className="card"
             style={{
-              maxWidth: "32rem",
-              margin: "0 auto",
+              maxWidth: "40rem",
+              margin: "0 auto 1.25rem",
               textAlign: "center",
-              padding: "3rem 2rem",
+              padding: "2rem",
             }}
           >
             <div style={{ marginBottom: "1.5rem" }}>
@@ -217,10 +220,14 @@ export default function Contribute({ lang }: Props) {
               </svg>
               {L("使用 GitHub 登录", "Login with GitHub")}
             </a>
+            <p style={{ marginTop: "0.75rem", color: "var(--text-muted)", fontSize: "0.78rem" }}>
+              {L("登录是可选的；不登录也可以直接匿名上传。", "Login is optional; anonymous upload works without login.")}
+            </p>
           </div>
-        ) : (
-          /* Upload Interface */
-          <div style={{ maxWidth: "40rem", margin: "0 auto" }}>
+        )}
+
+        {/* Upload Interface */}
+        <div style={{ maxWidth: "40rem", margin: "0 auto" }}>
             {/* WeChat ID Input */}
             <div className="card" style={{ marginBottom: "1.25rem" }}>
               <label
@@ -231,14 +238,13 @@ export default function Contribute({ lang }: Props) {
                   marginBottom: "0.5rem",
                 }}
               >
-                {L("微信号", "WeChat ID")}
-                <span style={{ color: "#ef4444", marginLeft: "0.25rem" }}>*</span>
+                {L("微信号（可选）", "WeChat ID (optional)")}
               </label>
               <input
                 type="text"
                 value={wechatId}
                 onChange={(e) => setWechatId(e.target.value)}
-                placeholder={L("请输入你的微信号（必填）", "Enter your WeChat ID (required)")}
+                placeholder={L("可选：请输入你的微信号", "Optional: enter your WeChat ID")}
                 style={{
                   width: "100%",
                   padding: "0.625rem 0.875rem",
@@ -254,7 +260,7 @@ export default function Contribute({ lang }: Props) {
                 onBlur={(e) => (e.target.style.borderColor = "var(--gray-200)")}
               />
               <p style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "0.375rem" }}>
-                {L("用于后续联系和反馈研究结果", "For follow-up contact and sharing research results")}
+                {L("可选。留空也可以匿名上传数据。", "Optional. Leave blank to upload anonymously.")}
               </p>
             </div>
 
@@ -415,7 +421,6 @@ export default function Contribute({ lang }: Props) {
               </div>
             </div>
           </div>
-        )}
       </div>
 
       {/* Spinner animation */}
